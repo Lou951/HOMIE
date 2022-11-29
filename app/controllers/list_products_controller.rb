@@ -5,15 +5,16 @@ class ListProductsController < ApplicationController
 
   def new
     @list_product = ListProduct.new
+    @products = Product.all
   end
 
-  def index
-    @list_product = ListProduct.all
-  end
+  # def index
+  #   @list_product = ListProduct.all  - is this needed or called through list?
+  # end
 
-  def show
-    @list_product.find(params[:id])
-  end
+  # def show
+  #   @list_product.find(params[:id]) - is this needed or called through list?
+  # end
 
   def create
     @list_product = ListProduct.new(list_product_params)
