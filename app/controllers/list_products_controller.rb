@@ -17,9 +17,6 @@ class ListProductsController < ApplicationController
 
   def create
     @list_product = ListProduct.new(list_product_params)
-    @list_product.user = current_user
-    @list_product.product = @product.id
-    @list_product.list = @list.id
     @list_product.save
   end
 
