@@ -12,6 +12,9 @@
   <%= product.product.item %>
   <br>
   Running out in: <%= product.frequency %> days
+  <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+  <button>Purchase</button>
+  <% end %>
   </li>
   <% end  %>
 </ul>
