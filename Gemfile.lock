@@ -265,6 +265,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-darwin-21
   x86_64-linux
 
@@ -279,6 +280,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  nokogiri
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)

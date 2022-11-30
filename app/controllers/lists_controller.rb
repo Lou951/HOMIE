@@ -8,6 +8,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list_product = ListProduct.new
     @list_products = ListProduct.all
+    @purchases = Purchase.all
   end
 
   def new
