@@ -7,7 +7,11 @@
     <%= f.button :submit%>
   <% end %>
 </div>
-
-<% @list_products.each do |product| %>
-<%= product.product.item %>
-<% end  %>
+<ul>
+  <% @list_products.each do |product| %>
+  <li>
+    <%= product.product.item %>
+    <%= product.frequency %>
+    <% end  %>
+  </li>
+</ul>
