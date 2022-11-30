@@ -1,7 +1,7 @@
 class ListProductsController < ApplicationController
   before_action :set_list, only: %i[new create]
   before_action :set_user, only: %i[new create]
-  before_action :set_product, only: %i[new create]
+  before_action :set_product, only: %i[create]
 
   def new
     @list_product = ListProduct.new
