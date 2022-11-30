@@ -27,4 +27,8 @@ class PurchasesController < ApplicationController
   def set_user
     @user = current_user
   end
+
+  def purchase_params
+    params.require(:purchase).permit(:price_paid, :product_id, :user_id)
+  end
 end
