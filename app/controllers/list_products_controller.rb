@@ -3,17 +3,18 @@ class ListProductsController < ApplicationController
   before_action :set_user, only: %i[new create]
   before_action :set_product, only: %i[new create]
 
-  def new
-    @list_product = ListProduct.new
-  end
+  # def new
+  #   @list_product = ListProduct.new - listed within list?
+  #   @products = Product.all
+  # end
 
-  def index
-    @list_product = ListProduct.all
-  end
+  # def index
+  #   @list_product = ListProduct.all  - is this needed or called through list?
+  # end
 
-  def show
-    @list_product.find(params[:id])
-  end
+  # def show
+  #   @list_product.find(params[:id]) - is this needed or called through list?
+  # end
 
   def create
     @list_product = ListProduct.new(list_product_params)
