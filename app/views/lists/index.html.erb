@@ -1,5 +1,17 @@
-<%# <% @Lists.each do |list| %>
-  <%# <h2><%= list.name</h2> %>
+<h1>Hello There</h1>
+
+<%# <%= link_to lists_show_path(list), class:"text-decoration-none picture" do %>
+  <%# <% @Lists.each do |list| %>
+    <%# <h2><%= list.name</h2> %>
+  <%# <% end %>
 <%# <% end %>
 
-<h1>Hello There</h1>
+<% @lists.each do |list| %>
+  <%= link_to list_path(list), class:"text-decoration-none picture" do %>
+  <p><%= list.name %></p>
+  <% end %>
+<% end %>
+
+<%= link_to new_list_path, class:"text-decoration-none picture" do %>
+  <button>Create List</button>
+<% end %>
