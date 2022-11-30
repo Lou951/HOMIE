@@ -1,0 +1,5 @@
+<div class="container">
+  <%= simple_form_for [@list, @user_list] do |f| %>
+    <%= f.input :user, :label => "User's E-mail" %>
+    <%= f.submit :submit %>
+  <% end %>

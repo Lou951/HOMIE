@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :lists do
     resources :list_products, only: %i[new create index]
+    resources :user_lists, only: %i[new create]
   end
 
   resources :list_products, only: :show do

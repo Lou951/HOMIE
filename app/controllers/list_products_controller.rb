@@ -22,7 +22,7 @@ class ListProductsController < ApplicationController
     @list_product.user = @user
     @list_product.list = @list
     if @list_product.save
-      redirect_to list_path(@list), notice: 'Your list prodyuct was successfully created.'
+      redirect_to list_path(@list), notice: 'Your list product was successfully created.'
     else
       render :new, status: :unprocessable_entity, notice: 'The product was not added to the list.'
     end

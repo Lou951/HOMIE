@@ -1,3 +1,6 @@
+<%= link_to new_list_user_list_path(@list), class:"text-decoration-none picture" do %>
+<button>Add User To List</button>
+<% end %>
 
 <div class="container">
   <%= simple_form_for [@list, @list_product] do |f| %>

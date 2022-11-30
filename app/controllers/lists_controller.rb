@@ -9,6 +9,7 @@ class ListsController < ApplicationController
     @list_product = ListProduct.new
     @list_products = ListProduct.all
     @purchases = Purchase.all
+    @user_list = UserList.new
   end
 
   def new
