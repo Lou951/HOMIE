@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
+    @list = List.new
   end
 
   def show
@@ -17,10 +18,15 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user = current_user
-    if @list.save
-      redirect_to list_path(@list), notice: 'Your list was successfully created.'
-    else
-      render :new, status: :unprocessable_entity, notice: 'Your list was not created.'
+
+    respond_to do |format|
+      if @list.save
+        format.html { redirect_to lists_path, notice: 'Your list was successfully created.' }
+        format.text { render partial: "lists/list", locals: { list: @list }, formats: [:html] }
+      else
+        format.html { render :new, status: :unprocessable_entity, notice: 'Your list was not created.' }
+        format.json
+      end
     end
   end
 
