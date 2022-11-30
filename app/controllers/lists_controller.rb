@@ -5,6 +5,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @list_product = ListProduct.new
+    @list_products = ListProduct.all
   end
 
   def new
