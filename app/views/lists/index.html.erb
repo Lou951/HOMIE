@@ -1,17 +1,22 @@
 <h1>Hello There</h1>
 
-<%# <%= link_to lists_show_path(list), class:"text-decoration-none picture" do %>
-  <%# <% @Lists.each do |list| %>
-    <%# <h2><%= list.name</h2> %>
-  <%# <% end %>
-<%# <% end %>
+<div data-controller="insert-list">
+  <div data-insert-list-target="list">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list), class:"text-decoration-none picture" do %>
+      <p><%= list.name %></p>
+      <% end %>
+    <% end %>
+  </div>
 
-<% @lists.each do |list| %>
-  <%= link_to list_path(list), class:"text-decoration-none picture" do %>
-  <p><%= list.name %></p>
-  <% end %>
-<% end %>
+  <button data-insert-list-target="button" data-action="click->insert-list#reveal">
+    hello
+  </button>
 
-<%= link_to new_list_path, class:"text-decoration-none picture" do %>
-  <button>Create List</button>
-<% end %>
+  <div class="list-form" data-insert-list-target="hide">
+    <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
+      <%= f.input :name %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
