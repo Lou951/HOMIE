@@ -20,6 +20,15 @@ export default class extends Controller {
       .then((data) => {
         this.listTarget.insertAdjacentHTML("beforeend", data)
       })
-
+    this.formTarget.reset()
+    this.hideTarget.classList.add("hidden")
   };
 }
+
+// .then((data) => {
+//       if (data.inserted_item) {
+//         this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item)
+//       }
+//       this.formTarget.outerHTML = data.form
+//     })
+// }
