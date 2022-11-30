@@ -9,11 +9,11 @@
     <% end %>
   </div>
 
-  <button data-insert-list-target="button" data-action="click->insert-list#reveal">
+  <button data-action="click->insert-list#reveal">
     hello
   </button>
 
-  <div class="list-form" data-insert-list-target="hide">
+  <div class="list-form hidden" data-insert-list-target="hide">
     <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
       <%= f.input :name %>
       <%= f.button :submit %>

@@ -2,11 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="insert-list"
 export default class extends Controller {
-  static targets = ["form", "list", "hide", "button"]
+  static targets = ["form", "list", "hide"]
 
 
-  reveal(event) {
-    hideTarget
+  reveal() {
+    this.hideTarget.classList.remove("hidden")
   }
 
   send(event){
