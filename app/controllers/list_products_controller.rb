@@ -12,9 +12,9 @@ class ListProductsController < ApplicationController
     @list_products = ListProduct.all
   end
 
-  # def show
-  #   @list_product.find(params[:id]) - is this needed or called through list?
-  # end
+  def show
+    @list_product = ListProduct.find(params[:id])
+  end
 
   def create
     @list_product = ListProduct.new(list_product_params)
