@@ -8,12 +8,16 @@
 List.destroy_all
 User.destroy_all
 
-puts "creating new islands..."
+puts "creating new users and lists..."
 
-User.create!(email: "john@email.com", password: "password")
-List.create!(name: "Home", user: User.first)
-User.create!(email: "michael@email.com", password: "password")
-List.create!(name: "Home", user: User.second)
+lists = ["Home", "Parents", "Office", "Restaurant"]
+
+i = 1
+10.times do
+  user = User.create!(email: "user#{i}@email.com", password: "password")
+  List.create!(name: lists.sample, user_id: user.id)
+  i += 1
+end
 
 puts "created #{User.count} users"
 puts "created #{List.count} lists"
