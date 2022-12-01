@@ -1,62 +1,15 @@
-<h1>Hello There</h1>
-
-<%# <%= link_to lists_show_path(list), class:"text-decoration-none picture" do %>
-  <%# <% @Lists.each do |list| %>
-    <%# <h2><%= list.name</h2> %>
-  <%# <% end %>
-<%# <% end %>
-
-
-<%# <% @Lists.each do |list| %>
-  <%# <h2><%= list.name</h2> %>
-<%# <% end %>
-<%#
+<h1>Your Lists!</h1>
 <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-       Home
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Toilet Paper, Detergent</div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Office
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Window cleaner</div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Parents' House
-      </button>
-    </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Kitchen Roll, Toilet Paper</div>
-    </div>
-  </div>
-</div> %>
-
-<div class="accordion accordion-flush" id="accordionFlushExample">
-<% index = 0 %>
-<% @lists.each do |list| %>
+  <% @lists.each_with_index do |list, index| %>
     <div class="accordion-item">
-      <h2 class="accordion-header" id=<%"flush-heading#{@words[index]}"%>>
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%"#flush-collapse#{@words[index]}"%> aria-expanded="false" aria-controls=<%"flush-collapse#{@words[index]}"%>>
+      <h2 class="accordion-header" id="flush-heading<%=@words[index]%>">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=@words[index]%>" aria-expanded="false" aria-controls="flush-collapse<%=@words[index]%>">
           <%= list.name %>
         </button>
       </h2>
-      <div id=<%"flush-collapse#{@words[index]}"%> class="accordion-collapse collapse" aria-labelledby=<%"flush-heading#{@words[index]}"%> data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Toilet paper, hand soap, window cleaner</div>
+      <div id="flush-collapse<%=@words[index]%>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%=@words[index]%>" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">Urgent Products</div>
       </div>
     </div>
-    <% ++index %>
   <% end %>
-  </div>
+</div>
