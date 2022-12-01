@@ -3,6 +3,8 @@
   <% @lists.each_with_index do |list, index| %>
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-heading<%=@words[index]%>">
+          <%link_to list_path(list)%>
+            <button> To List</button>
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=@words[index]%>" aria-expanded="false" aria-controls="flush-collapse<%=@words[index]%>">
           <%= list.name %>
         </button>

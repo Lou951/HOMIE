@@ -19,5 +19,9 @@
   <button>Purchase</button>
   <% end %>
   </li>
-  <% end  %>
+  <% end %>
 </ul>
+
+<div class="mt-4">
+      <%= link_to "Delete List", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this list?"}%>
+  </div>
