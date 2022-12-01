@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @purchase = Purchase.new
+    @purchase = Purchase.new(purchase_params)
     @purchase.list_product = @list_product
     @purchase.purchase_date = Date.today
     @purchase.user = @user

@@ -7,7 +7,7 @@ class UserListsController < ApplicationController
   end
 
   def create
-    @user_list = UserList.new
+    @user_list = UserList.new(user_list_params)
     @user_list.user = @user
     @user_list.list = @list
     if @user_list.save
