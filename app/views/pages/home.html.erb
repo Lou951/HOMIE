@@ -1,9 +1,10 @@
 <div class="home-page">
   <div class="box">
         <div class="card">
-            <h1>Welcome to HOMIE</h1>
-            <p>Homemaking made easy</p>
-            <p>Let us take care of the boring stuff, so you don't have to.</p>
+            <h1>HOMIE</h1>
+            <p>homemaking made easy</p>
+             <%= link_to "Log in", new_user_session_path, class: "user-link" %>
+             <%= link_to "Sign up", new_user_registration_path, class: "user-link" %>
         </div>
   </div>
   <%# <%= link_to lists_path(lists), class:"text-decoration-none" do %>
