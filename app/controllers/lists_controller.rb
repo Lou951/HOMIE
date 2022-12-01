@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
     @list = List.new
+    @words = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"]
   end
 
   def show
