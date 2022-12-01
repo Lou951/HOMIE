@@ -3,6 +3,8 @@ class ListsController < ApplicationController
   def index
     @list = List.new
     @lists = list_of_users_lists
+    @words = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
+
   end
 
   def show
