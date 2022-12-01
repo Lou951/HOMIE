@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :lists
   has_many :user_lists
+  has_many :lists, through: :user_lists
   has_many :purchases
   has_many :list_products
   # Include default devise modules. Others available are:

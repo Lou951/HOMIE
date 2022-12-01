@@ -1,15 +1,15 @@
 class ListsController < ApplicationController
+
   def index
-    @lists = List.all
+    @lists = show_users_list
     @list = List.new
   end
 
   def show
     @list = List.find(params[:id])
     @list_product = ListProduct.new
-    @list_products = ListProduct.all
+    @list_products = show_list_products(@list)
     @purchases = Purchase.all
-    @user_list = UserList.new
   end
 
   def new
@@ -48,6 +48,14 @@ class ListsController < ApplicationController
   end
 
   private
+
+  def show_list_products(list)
+    ListProduct.where(["list_id = #{list.id}"])
+  end
+
+  def show_users_list
+    current_user.lists.select(&:user_lists)
+  end
 
   def list_params
     params.require(:list).permit(:name)
