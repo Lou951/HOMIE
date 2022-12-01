@@ -1,8 +1,8 @@
 class ListsController < ApplicationController
 
   def index
-    @lists = show_users_list
     @list = List.new
+    @lists = list_of_users_lists
   end
 
   def show
@@ -53,8 +53,8 @@ class ListsController < ApplicationController
     ListProduct.where(["list_id = #{list.id}"])
   end
 
-  def show_users_list
-    current_user.lists.select(&:user_lists)
+  def list_of_users_lists
+    List.where(user_id: current_user) + current_user.lists.select(&:user_lists)
   end
 
   def list_params
