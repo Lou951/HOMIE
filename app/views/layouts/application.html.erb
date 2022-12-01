@@ -12,8 +12,8 @@
     <%= favicon_link_tag asset_path('homie.png') %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body><%= render "shared/navbar" unless controller.action_name == "home" %>
+  <%= render "shared/flashes" %>
 
     <%= yield %>
   </body>
