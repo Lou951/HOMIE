@@ -28,7 +28,7 @@ class ListProductsController < ApplicationController
     @list_product.product = @product
     @list_product.user = @user
     @list_product.list = @list
-    @list_product.next_purchase = Date.today + @list_product[:frequency]
+    @list_product.next_purchase = Date.today + @list_product.frequency
     # respond_to do |format|
     #   format.html { redirect_to_list_product_path }
     #   format.text { render partial: "/", locals: {list_product: @list_product}, formats: [:html] }
