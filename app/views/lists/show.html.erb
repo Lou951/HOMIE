@@ -25,3 +25,11 @@
 <div class="mt-4">
       <%= link_to "Delete List", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this list?"}%>
   </div>
+<ul>
+  <% @list.users.each do |list_user| %>
+  <li>
+    <%= list_user.email %>
+    <%= link_to "Delete User From List", delete_user_list_path(list_user), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this user from the list?"}%>
+    <% end %>
+  </li>
+</ul>

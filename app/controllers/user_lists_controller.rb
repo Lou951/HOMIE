@@ -12,9 +12,14 @@ class UserListsController < ApplicationController
     if @user_list.save!
       redirect_to list_path(@list), notice: 'The user was added to the list'
     else
-      raise
       render :new, status: :unprocessable_entity, notice: 'The user was not added to the list.'
     end
+  end
+
+  def destroy
+    @user_list = UserList.find(params[:id])
+    @user_list.destroy!
+    redirect_to lists_path, status: :see_other
   end
 
   private
