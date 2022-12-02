@@ -51,7 +51,8 @@ class ListsController < ApplicationController
   private
 
   def show_list_products(list)
-    ListProduct.where(["list_id = #{list.id}"])
+    @list_products = ListProduct.where(["list_id = #{list.id}"])
+    @list_products.order(next_purchase: :asc)
   end
 
   def list_of_users_lists
