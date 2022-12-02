@@ -41,12 +41,15 @@
 </div>
 
   <button data-action="click->insert-list#reveal">
-    click
+    Add List
   </button>
 
   <div class="list-form hidden" data-insert-list-target="hide">
     <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
       <%= f.input :name %>
+      <%= f.input :photo,
+                as: :file,
+                required: true %>
       <%= f.button :submit %>
     <% end %>
   </div>
