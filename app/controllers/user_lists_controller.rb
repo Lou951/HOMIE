@@ -18,8 +18,9 @@ class UserListsController < ApplicationController
 
   def destroy
     @user_list = UserList.find(params[:id])
+    @list = @user_list.list
     @user_list.destroy!
-    redirect_to lists_path, status: :see_other
+    redirect_to list_path(@list), status: :see_other
   end
 
   private
