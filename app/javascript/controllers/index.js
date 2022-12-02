@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import InsertListController from "./insert_list_controller"
 application.register("insert-list", InsertListController)
+
+import SearchBarController from "./search_bar_controller"
+application.register("search-bar", SearchBarController)
