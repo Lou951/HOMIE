@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     resources :purchases, only: %i[new create]
   end
 
-  delete '/lists/:list_id/user_lists/:id', to: 'user_lists#destroy', as: :delete_user_list
+  resources :user_lists, only: :destroy
 end
