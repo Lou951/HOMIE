@@ -2,10 +2,23 @@
 <button>Add User To List</button>
 <% end %>
 
+<div class="search-bar" data-controller="search-bar">
+  <%= form_with url: list_list_products_path(:list_id), method: :get, class: "d-flex my-3", data: {search_bar_target: "form", action: "submit->search-bar#submitting" } do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      data: { action: "keyup->search-bar#typing"},
+      placeholder: "Add a product"
+    %>
+    <%= submit_tag "Search"%>
+    <%= @results %>
+  <% end %>
+</div>
+
 <div class="container">
   <%= simple_form_for [@list, @list_product] do |f| %>
     <%= f.input :frequency %>
-    <%= f.association :product %>
+    <%= f.association :product, collection: Product.order('item ASC'), input_html: { class: 'select2' }  %>
     <%= f.submit :submit %>
   <% end %>
 </div>

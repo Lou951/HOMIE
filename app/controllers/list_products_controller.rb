@@ -9,7 +9,14 @@ class ListProductsController < ApplicationController
   end
 
   def index
-    @list_products = ListProduct.all
+    # @list_products = ListProduct.all
+    if params[:query].present?
+      @list_products = PgSearch.multisearch(params[:query])
+      @products = []
+      @list_products.each { |item| @products << Product.find(item.searchable_id) }
+    else
+      @list_products = ListProduct.all
+    end
   end
 
   def show
@@ -21,6 +28,10 @@ class ListProductsController < ApplicationController
     @list_product.product = @product
     @list_product.user = @user
     @list_product.list = @list
+    # respond_to do |format|
+    #   format.html { redirect_to_list_product_path }
+    #   format.text { render partial: "/", locals: {list_product: @list_product}, formats: [:html] }
+    # end
     if @list_product.save
       redirect_to list_path(@list), notice: 'Your list product was successfully created.'
     else
