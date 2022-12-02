@@ -26,8 +26,9 @@
   <% @list_products.each do |product| %>
   <li>
   <%= product.product.item %>
+  <%= product.next_purchase %>
   <br>
-  Running out in: <%= product.frequency %> days
+  Running out in: <%= (product.next_purchase - Date.today).to_i %> days
   <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
   <button>Purchase</button>
   <% end %>
