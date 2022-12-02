@@ -1,15 +1,17 @@
 class ListsController < ApplicationController
+
   def index
-    @lists = List.all
     @list = List.new
+    @lists = list_of_users_lists
+    @words = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
+
   end
 
   def show
     @list = List.find(params[:id])
     @list_product = ListProduct.new
-    @list_products = ListProduct.all
+    @list_products = show_list_products(@list)
     @purchases = Purchase.all
-    @user_list = UserList.new
   end
 
   def new
@@ -44,10 +46,18 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-    redirect_to my_lists_path(current_user), status: :see_other
+    redirect_to lists_path, status: :see_other
   end
 
   private
+
+  def show_list_products(list)
+    ListProduct.where(["list_id = #{list.id}"])
+  end
+
+  def list_of_users_lists
+    List.where(user_id: current_user) + current_user.lists.select(&:user_lists)
+  end
 
   def list_params
     params.require(:list).permit(:name)

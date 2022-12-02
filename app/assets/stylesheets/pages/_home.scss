@@ -1,5 +1,42 @@
 // Specific CSS for your home-page
+
+body, html {
+  height: 100%;
+}
+
 .home-page {
-  background-color: $primary;
-  padding: 50px;
+  background-image: url("https://img.freepik.com/free-vector/cleaning-suppliestools-flat-icons-set_1284-18328.jpg?w=1800&t=st=1669905889~exp=1669906489~hmac=a1c62ad1752aa8c2ee63c88ad51362eb1c74e992dd1e1ef5fc667b768a91e0f5");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.card {
+  align-self: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 250px;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+  height: 250px;
+  border-radius: 10px;
+  backdrop-filter: blur(14px);
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  text-align: center;
+}
+
+.user-link {
+  text-decoration: none;
+  color: black;
 }

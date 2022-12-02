@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :products, only: %i[create new]
 
   resources :lists do
-    resources :list_products, only: %i[new create index]
+    resources :list_products, only: %i[new create index destroy]
     resources :user_lists, only: %i[new create]
   end
 
