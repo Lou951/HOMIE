@@ -24,7 +24,8 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.save
         format.html { redirect_to lists_path, notice: 'Your list was successfully created.' }
-        format.text { render partial: "lists/list", locals: { list: @list }, formats: [:html] }
+        format.json
+        # format.json { render partial: "lists/list", locals: { list: @list }, formats: [:html] }
       else
         format.html { render :new, status: :unprocessable_entity, notice: 'Your list was not created.' }
         format.json

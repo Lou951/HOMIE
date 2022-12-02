@@ -13,12 +13,13 @@ export default class extends Controller {
     event.preventDefault()
     fetch(this.formTarget.action, {
       method: "POST",
-      headers: { "Accept": "text/plain" },
+      headers: { "Accept": "application/json" },
       body: new FormData(this.formTarget)
     })
-      .then((response) => response.text())
+      .then((response) => response.json())
       .then((data) => {
-        this.listTarget.insertAdjacentHTML("beforeend", data)
+        console.log(data.inserted_item)
+        this.listTarget.insertAdjacentHTML("beforeend", data.inserted_item)
       })
     this.formTarget.reset()
     this.hideTarget.classList.add("hidden")
