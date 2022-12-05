@@ -54,8 +54,6 @@
   <li>
     <%= user.email %>
     <br>
-    <%= raise %>
-    <br>
     <%= link_to "Remove Person From List", user_list_path(user), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this user from the list?"}%>
     <% end %>
   </li>
@@ -65,3 +63,8 @@
   <li>Total Expenses: <%= @purchases.sum(:price_paid) %></li>
 </div>
 </div>
+
+<% @user_purchases.each do |key, value| %>
+<%= key %> : <%= value %>
+<% raise %>
+<% end %>
