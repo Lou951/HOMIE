@@ -12,7 +12,8 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list_product = ListProduct.new
     @list_products = show_list_products(@list)
-    @purchases = Purchase.all
+    @purchases = Purchase.joins(:list_product).and(ListProduct.where(list: @list))
+    @all_list_users = @list.users
   end
 
   def new
@@ -22,7 +23,6 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user = current_user
-
     respond_to do |format|
       if @list.save
         format.html { redirect_to lists_path, notice: 'Your list was successfully created.' }
@@ -59,7 +59,7 @@ class ListsController < ApplicationController
   end
 
   def list_of_users_lists
-    List.where(user_id: current_user) + current_user.lists.select(&:user_lists)
+    @user_lists = List.where(user_id: current_user) + current_user.lists.select(&:user_lists)
   end
 
   def list_params
