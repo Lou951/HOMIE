@@ -33,6 +33,33 @@
 </div>
 <ul style="list-style: none";>
   <% @list_products.each do |product| %>
+   <% if (product.next_purchase - Date.today).to_i < 3  %>
+  <li>
+    <div class="card-product" id="urgent">
+      <img src="<%=product.product.image_url%>" >
+      <div class="card-product-infos">
+        <h2><%= product.product.item %></h2>
+        Running out in: <%= (product.next_purchase - Date.today).to_i %> days
+    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+    <button>Purchase</button>
+    <% end %>
+    </div>
+  </div>
+  </li>
+<% elsif ((product.next_purchase - Date.today).to_i < 7) %>
+  <li>
+    <div class="card-product" id="warning">
+      <img src="<%=product.product.image_url%>" >
+      <div class="card-product-infos">
+        <h2><%= product.product.item %></h2>
+        Running out in: <%= (product.next_purchase - Date.today).to_i %> days
+    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+    <button>Purchase</button>
+    <% end %>
+    </div>
+  </div>
+  </li>
+<% else %>
   <li>
     <div class="card-product">
       <img src="<%=product.product.image_url%>" >
@@ -44,6 +71,7 @@
     <% end %>
     </div>
 </div>
+<% end %>
 
   </li>
   <% end %>

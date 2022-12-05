@@ -31,18 +31,6 @@
           </div>
           <% end %>
 
-
-  <div data-controller="insert-list">
-    <div data-insert-list-target="list">
-      <% @lists.each do |list| %>
-        <div class="card-category my-3 mx-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= List.card_pic(list.name) %>)">
-        <%= link_to list_path(list), class:"text-decoration-none picture" do %>
-        <p><%= list.name %></p>
-        <% end %>
-        </div>
-      <% end %>
-  </div>
-
     <button class="btn btn-create-list mx-3"data-action="click->insert-list#reveal">
       Add List
     </button>
