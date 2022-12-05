@@ -10,4 +10,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
+
+  def list_purchases(list)
+    purchases.where(list_product_id: list.list_products.pluck(:id))
+  end
 end

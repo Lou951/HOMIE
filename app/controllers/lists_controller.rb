@@ -4,13 +4,16 @@ class ListsController < ApplicationController
     @list = List.new
     @lists = list_of_users_lists
     @words = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
+    @urgent_products = ListProduct.where(next_purchase: Date.today..Date.today + 3.days)
+    # @users = User.where.not(id: current_user.id).limit(3)
   end
 
   def show
     @list = List.find(params[:id])
     @list_product = ListProduct.new
     @list_products = show_list_products(@list)
-    @purchases = Purchase.all
+    @purchases = Purchase.joins(:list_product).and(ListProduct.where(list: @list))
+    @all_list_users = @list.users
   end
 
   def new
@@ -20,7 +23,6 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user = current_user
-
     respond_to do |format|
       if @list.save
         format.html { redirect_to lists_path, notice: 'Your list was successfully created.' }
@@ -49,6 +51,12 @@ class ListsController < ApplicationController
     redirect_to lists_path, status: :see_other
   end
 
+  # def calendar
+  #   next_purchase = params.fetch(:next_purchase, Date.today).to_date
+
+  #   @list_products = ListProducts.where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+  # end
+
   private
 
   def show_list_products(list)
@@ -57,7 +65,7 @@ class ListsController < ApplicationController
   end
 
   def list_of_users_lists
-    List.where(user_id: current_user) + current_user.lists.select(&:user_lists)
+    @user_lists = List.where(user_id: current_user) + current_user.lists.select(&:user_lists)
   end
 
   def list_params
