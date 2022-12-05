@@ -15,3 +15,6 @@ application.register("insert-list", InsertListController)
 
 import SearchBarController from "./search_bar_controller"
 application.register("search-bar", SearchBarController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)
