@@ -4,6 +4,9 @@ class ListsController < ApplicationController
     @list = List.new
     @lists = list_of_users_lists
     @words = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
+    @urgent_products = ListProduct.where("frequency = 2").limit(1)
+    @urgents = Product.where("id = #{@urgent_products}")
+    # @users = User.where.not(id: current_user.id).limit(3)
   end
 
   def show
@@ -11,6 +14,7 @@ class ListsController < ApplicationController
     @list_product = ListProduct.new
     @list_products = show_list_products(@list)
     @purchases = Purchase.all
+    @urgent_products_population = []
   end
 
   def new
@@ -62,5 +66,9 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name)
+  end
+
+  def urgent_product
+    ListProduct.select("product_id").where("frequency = 2")
   end
 end

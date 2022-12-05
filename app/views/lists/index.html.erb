@@ -9,7 +9,19 @@
           </div>
           <div id="flush-collapse<%=@words[index]%>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%=@words[index]%>" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body"><%= link_to list_path(list), class:"text-decoration-none picture" do %>
-                <p><%= "URGENT PRODUCTS" %></p>
+                <% @urgent_products.each do |product| %>
+                   <div class="card-product" id="urgent">
+                      <img src="<%=product.product.image_url%>" >
+                      <div class="card-product-infos">
+                        <h2><%= product.product.item %></h2>
+                        <ul style="list-style: none">
+                          <li>Running out in: 2 days</li>
+                          <li><p> </p></li>
+                          <li>Go to List</li>
+                        </ul>
+                    </div>
+                  </div>
+                <% end %>
               <% end %>
             </div>
           </div>
