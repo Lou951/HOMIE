@@ -28,19 +28,29 @@
           </div>
           <% end %>
 
-          <button class="btn btn-create-list mx-3"data-action="click->insert-list#reveal">
-            Add List
-          </button>
 
-          <div class="list-form hidden mx-3" data-insert-list-target="hide">
-            <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
-              <%= f.input :name %>
-              <%# <%= f.input :photo,
-                        as: :file,
-                        required: true %>
-              <%= f.button :submit, class: "btn btn-create-list", id: "submit-btn" %>
-            <% end %>
-          </div>
+  <div data-controller="insert-list">
+    <div data-insert-list-target="list">
+      <% @lists.each do |list| %>
+        <div class="card-category my-3 mx-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= List.card_pic(list.name) %>)">
+        <%= link_to list_path(list), class:"text-decoration-none picture" do %>
+        <p><%= list.name %></p>
+        <% end %>
         </div>
-      </div>
+      <% end %>
+  </div>
+
+    <button class="btn btn-create-list mx-3"data-action="click->insert-list#reveal">
+      Add List
+    </button>
+
+    <div class="list-form hidden mx-3" data-insert-list-target="hide">
+      <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
+        <%= f.input :name %>
+        <%# <%= f.input :photo,
+                  as: :file,
+                  required: true %>
+        <%= f.button :submit, class: "btn btn-create-list", id: "submit-btn" %>
+      <% end %>
     </div>
+</div>
