@@ -18,6 +18,7 @@ export default class extends Controller {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         console.log(data.inserted_item)
         this.listTarget.insertAdjacentHTML("beforeend", data.inserted_item)
       })
