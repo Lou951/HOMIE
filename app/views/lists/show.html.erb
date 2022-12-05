@@ -74,8 +74,22 @@
 </ul>
 
 <div class="mt-4">
-      <%= link_to "Delete List", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this list?"}%>
-  </div>
+  <%= link_to "Delete List", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this list?"}%>
+</div>
+
+<div class="list-calendar">
+  <%= month_calendar(event: @list_products) do |date, list_products| %>
+    <%= date %>
+    <% @list_products.each do |list_products| %>
+      <% if date == list_products.next_purchase.strftime("%d").to_i %>
+        <div class="list_products">
+          <p><%= list_products.product.item %></p>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
 <ul>
   <% @list.user_lists.each do |user_list| %>
   <li>
