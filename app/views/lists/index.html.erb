@@ -1,57 +1,33 @@
 <div class="container">
-  <h1 class="mx-3">Your Lists!</h1>
-  <%# <div class="accordion accordion-flush" id="accordionFlushExample"> %>
-    <%# <div data-controller="insert-list">
-      <div data-insert-list-target="list"> %>
-        <%# <% @lists.each_with_index do |list, index| %>
-            <%# <div class="accordion-item"> %>
-              <%# <h2 class="accordion-header" id="flush-heading<%=@words[index]">  %>
-                <%# <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=@words[index]" aria-expanded="false" aria-controls="flush-collapse<%=@words[index]%>
-                  <%# <%= list.name %>
-                <%# </button> %>
-              <%# </h2> %>
-              <%# <div id="flush-collapse<%=@words[index]" class="accordion-collapse collapse" aria-labelledby="flush-heading<%=@words[index]" data-bs-parent="#accordionFlushExample"> %>
-                <%# <div class="accordion-body">Urgent Products</div>
-              </div> %>
-            <%# </div> %>
-          <%# <% end %>
-        <%# </div> %>
-        <%# <button data-action="click->insert-list#reveal"> %>
-        <%# click
-        </button> %>
-  <%#
-        <div class="list-form hidden" data-insert-list-target="hide">
-        <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
-          <%# <%= f.input :name %>
-          <%# <%= f.button :submit %>
-        <%# <% end %>
-        <%# </div>  %>
-    <%# </div> %>
-  <%# </div>  %>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div data-controller="insert-list">
+      <% @lists.each_with_index do |list, index| %>
+        <div class="accordion-item" data-insert-list-target="list">
+          <div class="card-category my-3 mx-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.windowworld.com/uploads/images/news/header-spring-cleaning-blog.jpg)">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=@words[index]%>" aria-expanded="false" aria-controls="flush-collapse<%=@words[index]%>">
+          <p><%= list.name %></p>
+          </div>
+          <div id="flush-collapse<%=@words[index]%>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%=@words[index]%>" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"><%= link_to list_path(list), class:"text-decoration-none picture" do %>
+                <p><%= "URGENT PRODUCTS" %></p>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
 
+          <button class="btn btn-create-list mx-3"data-action="click->insert-list#reveal">
+            Add List
+          </button>
 
-  <div data-controller="insert-list">
-    <div data-insert-list-target="list">
-      <% @lists.each do |list| %>
-        <div class="card-category my-3 mx-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.windowworld.com/uploads/images/news/header-spring-cleaning-blog.jpg)">
-        <%= link_to list_path(list), class:"text-decoration-none picture" do %>
-        <p><%= list.name %></p>
-        <% end %>
+          <div class="list-form hidden mx-3" data-insert-list-target="hide">
+            <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
+              <%= f.input :name %>
+              <%# <%= f.input :photo,
+                        as: :file,
+                        required: true %>
+              <%= f.button :submit, class: "btn btn-create-list", id: "submit-btn" %>
+            <% end %>
+          </div>
         </div>
-      <% end %>
-  </div>
-
-    <button class="btn btn-create-list mx-3"data-action="click->insert-list#reveal">
-      Add List
-    </button>
-
-    <div class="list-form hidden mx-3" data-insert-list-target="hide">
-      <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
-        <%= f.input :name %>
-        <%# <%= f.input :photo,
-                  as: :file,
-                  required: true %>
-        <%= f.button :submit, class: "btn btn-create-list", id: "submit-btn" %>
-      <% end %>
     </div>
 </div>
