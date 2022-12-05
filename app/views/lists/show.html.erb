@@ -49,7 +49,6 @@
       <img src="<%=product.product.image_url%>" >
       <div class="card-product-infos">
         <h2><%= product.product.item %></h2>
-        <% @urgent_products_population.push(product.product.item) %>
         Running out in: <%= (product.next_purchase - Date.today).to_i %> days
     <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
     <button>Purchase</button>
