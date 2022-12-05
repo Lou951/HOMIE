@@ -3,23 +3,5 @@
 .accordion-body {
   font-size: 12px;
   color: white;
-  background-color: $my-light-blue;
-}
-
-.accordion-button {
-  background-color: transparent;
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  transition: 0.20s;
-}
-
-.accordion-button:not(.collapsed) {
-  background-color: transparent;
-  color: white;
-}
-
-.accordion-button:hover {
-  background-color: rgba($color: black, $alpha: 0.20);
-  transition: 0.50s;
+  background-color: red;
 }
