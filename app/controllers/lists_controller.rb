@@ -51,6 +51,12 @@ class ListsController < ApplicationController
     redirect_to lists_path, status: :see_other
   end
 
+  # def calendar
+  #   next_purchase = params.fetch(:next_purchase, Date.today).to_date
+
+  #   @list_products = ListProducts.where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+  # end
+
   private
 
   def show_list_products(list)
