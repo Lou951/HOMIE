@@ -20,6 +20,9 @@
                       <li><p> </p></li>
                       <li>Running out in: <%= (product.next_purchase - Date.today).to_i %> days</li>
                     </ul>
+                    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+                      <button>Purchase</button>
+                    <% end %>
                 </div>
               </div>
               <% end %>

@@ -12,11 +12,19 @@
   font-weight: bold;
   color: white;
   transition: 0.20s;
+  border: none;
+  border-color: transparent;
 }
 
 .accordion-button:not(.collapsed) {
   background-color: transparent;
   color: white;
+  border: none;
+  border-color: transparent;
+}
+
+.accordion {
+  --bs-accordion-border-color: #00000000;
 }
 
 // .accordion-button:hover {
