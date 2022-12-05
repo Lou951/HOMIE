@@ -5,7 +5,6 @@ class List < ApplicationRecord
   has_many :users, through: :user_lists
   validates :name, presence: true
 
-
   def self.card_pic(placeholder)
     case placeholder.capitalize
     when "Home"
