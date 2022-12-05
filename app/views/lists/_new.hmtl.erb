@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <h5 class="modal-title">Add new product below </h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="list-form hidden" data-insert-list-target="hide">
+    <%= simple_form_for [@list, @list_product] do |f| %>
+      <%= f.input :frequency %>
+      <%= f.association :product, collection: Product.order('item ASC'), input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
+      <%= f.submit :submit %>
+    <% end %>
+  </div>
+</div>

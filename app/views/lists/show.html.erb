@@ -2,32 +2,35 @@
 <button>Add User To List</button>
 <% end %>
 
-<%# <div class="search-bar" data-controller="search-bar"> %>
-  <%# <%= form_with url: list_list_products_path(:list_id), method: :get, class: "d-flex my-3", data: {search_bar_target: "form", action: "submit->search-bar#submitting" } do %>
-    <%# <%= text_field_tag :query, %>
-      <%# params[:query], %>
-      <%# class: "form-control", %>
-      <%# data: { action: "keyup->search-bar#typing"}, %>
-      <%# placeholder: "Add a product" %>
-    <%# <%= submit_tag "Search"%>
-    <%# <%= @results %>
-  <%# <% end %>
-<%# </div> %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add Product
+</button>
 
-<div data-controller="insert-list">
-  <button data-action="click->insert-list#reveal">
-    Add Product
-  </button>
-
-  <div class="list-form hidden" data-insert-list-target="hide">
-    <%= simple_form_for [@list, @list_product] do |f| %>
-    <%= f.input :frequency %>
-    <%= f.association :product, collection: Product.order('item ASC'), input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
-    <%= f.submit :submit %>
-  <% end %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="list-form" data-insert-list-target="hide">
+          <%= simple_form_for [@list, @list_product] do |f| %>
+            <%= f.input :frequency %>
+            <%= f.association :product, collection: Product.order('item ASC'), input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
+            <%= f.submit :submit %>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
-
 <ul style="list-style: none";>
   <% @list_products.each do |product| %>
   <% if (product.next_purchase - Date.today).to_i < 3  %>
