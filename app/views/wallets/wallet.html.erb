@@ -18,7 +18,7 @@
                         <%= "You are owed £#{user_difference} from your household" %>
                       <% end %>
                     </p>
-                    <p class="border-top border-dark pt-3"><%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: #{list.list_products_total(list)}" %><p>
+                    <p class="border-top border-dark pt-3"><%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: £#{list.list_products_total(list)}" %><p>
                 </div>
               </div>
             <% end %>
