@@ -1,6 +1,14 @@
-<div class="d-flex justify-content-around" id="footer">
-  <i class="fa-sharp fa-solid fa-house"></i>
-  <i class="fa-solid fa-calendar-days"></i>
-  <i class="fa-solid fa-wallet"></i>
-  <i class="fa-solid fa-user"></i>
+<div class="footer d-flex justify-content-around text-center" >
+  <%= link_to lists_path do %>
+    <i class="fa-sharp fa-solid fa-house"></i>
+  <% end %>
+  <%= link_to lists_path do %>
+    <i class="fa-solid fa-calendar-days"></i>
+  <% end %>
+  <%= link_to wallet_path do %>
+    <i class="fa-solid fa-wallet"></i>
+  <% end %>
+  <%= link_to user_path(current_user) do %>
+    <i class="fa-solid fa-user"></i>
+  <% end %>
 </div>

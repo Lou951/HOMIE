@@ -1,9 +1,16 @@
-#footer{
+.footer{
+  position: absolute;
+  bottom: 0em;
   height: 80px;
-  justify-content: space-between;
   background-color: white;
   font-size: 35px;
   width: 100%;
-  text-align: center;
-  padding-top: 20px;
+  text-decoration: none;
+  padding-top: 14px;
+  opacity: 0.5;
+}
+
+.footer a {
+  color: purple;
+  opacity: 1;
 }
