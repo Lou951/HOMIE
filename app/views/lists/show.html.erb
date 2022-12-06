@@ -98,7 +98,7 @@
   <% @list.users.each do |user| %>
   <p>
   <% user.list_purchases(@list).sum(&:price_paid) %>
-  <% user_difference = (user.list_purchases(@list).sum(&:price_paid) - (@purchases.sum(:price_paid) / @all_list_users.count)).round(2) %>
+  <% user_difference = (user.list_purchases(@list).sum(&:price_paid) - @purchases.sum(:price_paid) / @all_list_users.count)).round(2) %>
   <% if user_difference < 0 %>
   <%= "#{user.email} owes £#{user_difference.abs}" %>
   <% else %>
