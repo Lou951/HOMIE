@@ -1,0 +1,66 @@
+.simple-calendar {
+  .table {
+    min-height: 80vh;
+    max-height: 40vh;
+    background-color: $my-turquoise;
+  }
+
+  .day {
+    background-color: $my-light-blue;
+  }
+
+  .day:has(p) {
+    background: $my-green;
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    background-color: $my-orange;
+  }
+  .past {}
+  .future {}
+
+  .start-date {
+  }
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-event {
+    background-color: $my-red;
+  }
+
+  .calendar-heading {
+    color: $my-green;
+
+  }
+
+  .calendar-heading a {
+    text-decoration: none;
+    color: $my-green
+  }
+  .next p {
+    text-size: 20px;
+  }
+}
+
+// .meeting {
+//   color: white;
+//   padding: 8px 24px;
+//   border-radius: 4px;
+//   background: #1EDD88;
+//   transition: background 0.3s ease;
+// }
+
+// .meeting:hover {
+//   background: #1BCB7F;
+//   color: white;
+// }
