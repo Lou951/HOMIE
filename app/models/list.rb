@@ -10,7 +10,15 @@ class List < ApplicationRecord
   def add_owner_to_user_list
     UserList.create(user: user, list: self)
   end
-  
+
+  def list_products_total(list)
+  sum = 0
+    list.list_products.each do |el|
+      sum += el.purchases.sum(&:price_paid)
+    end
+  sum
+  end
+
   def self.card_pic(placeholder)
     case placeholder.capitalize
     when "Home"

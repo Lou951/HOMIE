@@ -1,0 +1,15 @@
+<ul>
+  <% current_user.lists.each do |list| %>
+      <li>
+        <h4><%= list.name %></h4>
+        <% user_difference = current_user.list_purchases(list).sum(&:price_paid) - list.list_products_total(list) %>
+          <% if user_difference == 0 %>
+            <%= "You owe nothing to this list" %>
+            <% elsif user_difference < 0 %>
+            <%= "You owe £#{user_difference} to this list" %>
+            <% else %>
+            <%= "You are owed £#{user_difference} to this list" %>
+          <% end %>
+      </li>
+  <% end %>
+</ul>
