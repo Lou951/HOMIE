@@ -37,19 +37,34 @@
           </div>
           <% end %>
 
-    <button class="btn btn-create-list mx-3"data-action="click->insert-list#reveal">
-      Add List
+    <button type="button" class="btn btn-primary" id="btn-show-page" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      New List
     </button>
 
-    <div class="list-form hidden mx-3" data-insert-list-target="hide">
-      <%= simple_form_for(@list, data: {insert_list_target: "form", action: "submit->insert-list#send"}) do |f| %>
-        <%= f.input :name %>
-        <%# <%= f.input :photo,
-                  as: :file,
-                  required: true %>
-        <%= f.button :submit, class: "btn btn-create-list", id: "submit-btn" %>
-        <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
-      <% end %>
+<!-- adding modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="list-form" data-insert-list-target="hide">
+              <%= simple_form_for [@list] do |f| %>
+                <%= f.input :name %>
+                <%= f.submit :submit, class: 'btn btn-warning' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+<!-- TODO
+1 make all the modals the same in all the pages
+2 fix the labels and add placeholders inside the inputs
+3 restart the server if index still not scrollable fix it! -->

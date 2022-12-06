@@ -51,3 +51,9 @@ li {
   display: flex;
   justify-content: space-between;
 }
+
+.modal.show .modal-dialog {
+  transform: none;
+  position: relative;
+  top: 20em;
+}

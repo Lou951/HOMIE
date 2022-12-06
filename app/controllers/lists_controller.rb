@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 
   def index
     @list = List.new
-    @lists = list_of_users_lists
+    @lists = list_of_users_lists.uniq
     @words = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"]
     @urgent_products = ListProduct.where(next_purchase: Date.today..Date.today + 3.days).order(next_purchase: :asc)
     # @users = User.where.not(id: current_user.id).limit(3)
