@@ -1,9 +1,9 @@
 <%= link_to new_list_user_list_path(@list), class:"text-decoration-none picture" do %>
-<button>Add User To List</button>
+<button class="btn btn-primary" id="btn-show-page">Add User To List</button>
 <% end %>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary" id="btn-show-page" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add Product
 </button>
 
@@ -41,7 +41,7 @@
         <h2><%= product.product.item %></h2>
         Running out in: <%= (product.next_purchase - Date.today).to_i %> days
     <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-    <button>Purchase</button>
+    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
     <% end %>
     </div>
   </div>
@@ -54,7 +54,7 @@
         <h2><%= product.product.item %></h2>
         Running out in: <%= (product.next_purchase - Date.today).to_i %> days
     <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-    <button>Purchase</button>
+    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
     <% end %>
     </div>
   </div>
@@ -67,7 +67,7 @@
         <h2><%= product.product.item %></h2>
         Running out in: <%= (product.next_purchase - Date.today).to_i %> days
     <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-    <button>Purchase</button>
+    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
     <% end %>
     </div>
 </div>

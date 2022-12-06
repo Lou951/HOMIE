@@ -18,11 +18,15 @@
                     <h2><%= product.product.item %></h2>
                     <ul style="list-style: none">
                       <li><p> </p></li>
+                    </ul>
+                    <div class="card-flex-box ">
+                    <ul style="list-style: none">
                       <li>Running out in: <%= (product.next_purchase - Date.today).to_i %> days</li>
                     </ul>
                     <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-                      <button>Purchase</button>
+                      <i class="fa-regular fa-circle-check text-black fa-xl"></i>
                     <% end %>
+                    </div>
                 </div>
               </div>
               <% end %>
@@ -42,6 +46,7 @@
                   as: :file,
                   required: true %>
         <%= f.button :submit, class: "btn btn-create-list", id: "submit-btn" %>
+        <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
       <% end %>
     </div>
 </div>

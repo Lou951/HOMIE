@@ -11,16 +11,24 @@
   font-size: 24px;
   font-weight: bold;
   color: white;
-  transition: 0.20s;
-  border: none;
-  border-color: transparent;
 }
 
 .accordion-button:not(.collapsed) {
   background-color: transparent;
   color: white;
-  border: none;
-  border-color: transparent;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0,0,0,.125);
+}
+
+.accordion-button::after {
+  background-image: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: none;
 }
 
 .accordion {
@@ -42,4 +50,9 @@ h2 {
 
 li {
   color: black;
+}
+
+.card-flex-box {
+  display: flex;
+  justify-content: space-between;
 }

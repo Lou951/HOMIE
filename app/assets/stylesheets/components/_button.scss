@@ -3,17 +3,25 @@
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
-  transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  background: linear-gradient(#fbaf16, #c47f0f);
+  transition: 0.3s ease;
+  border: 1px solid #c47f0f;
   width: 92%;
+  margin-bottom: 20px;
 }
 
 .btn-create-list:hover {
-  background: linear-gradient(#147EFF, #0F67DA);
+  background: linear-gradient(#fbaf16, #c47f0f);
   color: white;
 }
 
 #submit-btn {
   width: 100%;
+}
+
+#btn-show-page {
+  background: linear-gradient(#fbaf16, #c47f0f);
+  transition: 0.3s ease;
+  border: 1px solid #c47f0f;
+  margin: 10px;
 }
