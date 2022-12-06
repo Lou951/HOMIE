@@ -12,6 +12,20 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   def list_purchases(list)
-    purchases.where(list_product_id: list.list_products.pluck(:id))
+    Purchase.where(
+      list_product_id: list.list_products.pluck(:id)
+    ).where(
+      created_at: (Time.now - 1.month)..Time.now
+    ).where(
+      user_id: id
+    ).sum(&:price_paid)
+  end
+
+  def all_purchases(list)
+    Purchase.where(
+      list_product_id: list.list_products.pluck(:id)
+    ).where(
+      created_at: (Time.now - 1.month)..Time.now
+    ).sum(&:price_paid)
   end
 end

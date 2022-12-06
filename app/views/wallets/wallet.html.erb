@@ -6,19 +6,19 @@
             <% current_user.lists.each do |list| %>
               <div class="card text-black bg-warning mb-3 h-50" style="max-width: 18rem;">
                 <div class="card-body">
-                  <h5 class="card-title pb-2 border-bottom border-dark"><%= list.name %>
+                  <h5 class="card-title pb-2 border-bottom border-dark"><%= list.name.capitalize %>
                   </h5>
                     <p class="card-text mb-2">
-                      <% user_difference = (current_user.list_purchases(list).sum(&:price_paid) - (list.list_products_total(list) / list.users.count )) %>
-                      <% if user_difference.positive? %>
-                        <%= "You are owed £#{user_difference} from your household" %>
+                      <% user_difference = (current_user.list_purchases(list) - (current_user.all_purchases(list) / list.users.count)).round(2) %>
+                       <% if user_difference.positive? %>
+                          <%= "You are owed £#{user_difference} from your household" %>
                         <% elsif user_difference.negative? %>
-                        <%= "You owe £#{user_difference.abs} to the household" %>
-                        <% elsif user_difference == 0 %>
-                        <%= "You owe nothing to the list" %>
+                          <%= "You owe £#{user_difference.abs} to the household" %>
+                        <% else %>
+                          <%= "You owe nothing to the list" %>
                       <% end %>
                     </p>
-                    <p class="border-top border-dark pt-3"><%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: #{list.list_products_total(list)}" %><p>
+                    <p class="border-top border-dark pt-3"><%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: £#{list.list_products_total(list)}" %><p>
                 </div>
               </div>
             <% end %>
