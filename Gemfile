@@ -57,8 +57,8 @@ gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
-gem 'bootstrap', '~> 5.2', '>= 5.2.3'
-gem 'popper_js', '~> 2.11.5'
+# gem 'bootstrap', '~> 5.2', '>= 5.2.3'
+# gem 'popper_js', '~> 2.11.5'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
