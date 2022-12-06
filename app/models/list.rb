@@ -12,11 +12,12 @@ class List < ApplicationRecord
   end
 
   def list_products_total(list)
-  sum = 0
+    sum = 0
     list.list_products.each do |el|
-      sum += el.purchases.sum(&:price_paid)
+      # sum += el.purchases.where(created_at: (Time.now - 1.month)..Time.now).sum(&:price_paid)
+      el.purchases.each {|purchase| sum += purchase.price_paid}
     end
-  sum
+    sum
   end
 
   def self.card_pic(placeholder)
