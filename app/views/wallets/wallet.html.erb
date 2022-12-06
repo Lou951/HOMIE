@@ -18,7 +18,7 @@
                         <%= "You are owed £#{user_difference} from your household" %>
                       <% end %>
                     </p>
-                    <h6> Total Household Expenditure: <%= list.list_products_total(list) %>
+                    <h6><%= "Total Household Expenditure: #{list.list_products_total(list)}" unless list.list_products_total(list) == 0 %></h6>
                 </div>
               </div>
             <% end %>
