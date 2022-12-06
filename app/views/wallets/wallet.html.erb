@@ -9,16 +9,16 @@
                   <h5 class="card-title pb-2 border-bottom border-dark"><%= list.name %>
                   </h5>
                     <p class="card-text mb-2">
-                      <% user_difference = current_user.list_purchases(list).sum(&:price_paid) - list.list_products_total(list) %>
-                      <% if user_difference == 0 %>
-                        <%= "You owe nothing to this list" %>
-                        <% elsif user_difference < 0 %>
-                        <%= "You owe £#{user_difference.abs} to the household" %>
-                        <% else %>
+                      <% user_difference = (current_user.list_purchases(list).sum(&:price_paid) - (list.list_products_total(list) / list.users.count )) %>
+                      <% if user_difference.positive? %>
                         <%= "You are owed £#{user_difference} from your household" %>
+                        <% elsif user_difference.negative? %>
+                        <%= "You owe £#{user_difference.abs} to the household" %>
+                        <% elsif user_difference == 0 %>
+                        <%= "You owe nothing to the list" %>
                       <% end %>
                     </p>
-                    <p class="border-top border-dark pt-3"><%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: £#{list.list_products_total(list)}" %><p>
+                    <p class="border-top border-dark pt-3"><%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: #{list.list_products_total(list)}" %><p>
                 </div>
               </div>
             <% end %>
