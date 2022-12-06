@@ -15,8 +15,7 @@ Rails.application.routes.draw do
     resources :purchases, only: %i[new create]
   end
 
-  # get "purchases/:id", to: "purchases#show", as: "/wallet"
+  get "/wallets", to: "wallets#wallet", as: :wallet
 
-  resources :purchases, only: :show
   resources :user_lists, only: :destroy
 end

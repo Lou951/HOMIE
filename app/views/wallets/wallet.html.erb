@@ -4,20 +4,22 @@
       <div class="col-sm-12">
         <div class="card-group mt-2">
             <% current_user.lists.each do |list| %>
-              <div class="card bg-light mb-3 h-50" style="max-width: 18rem;">
+              <div class="card text-black bg-warning mb-3 h-50" style="max-width: 18rem;">
                 <div class="card-body">
-                  <div class="card-title"><%= list.name %></div>
+                  <h5 class="card-title pb-2 border-bottom border-dark"><%= list.name %>
+                  </h5>
                     <p class="card-text">
                       <% user_difference = current_user.list_purchases(list).sum(&:price_paid) - list.list_products_total(list) %>
                       <% if user_difference == 0 %>
                         <%= "You owe nothing to this list" %>
                         <% elsif user_difference < 0 %>
-                        <%= "You owe £#{user_difference.abs} to this list" %>
+                        <%= "You owe £#{user_difference.abs} to the household" %>
                         <% else %>
-                        <%= "You are owed £#{user_difference} to this list" %>
+                        <%= "You are owed £#{user_difference} from your household" %>
                       <% end %>
                     </p>
-                  </div>
+                    <h6> Total Household Expenditure: <%= list.list_products_total(list) %>
+                </div>
               </div>
             <% end %>
         </div>

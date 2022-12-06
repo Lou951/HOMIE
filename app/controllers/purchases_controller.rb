@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :set_user, only: %i[new create show]
+  before_action :set_user, only: %i[new create]
   before_action :set_list_product, only: %i[new create]
 
   def new
@@ -18,10 +18,6 @@ class PurchasesController < ApplicationController
     else
       render :new, status: :unprocessable_entity, notice: 'The purchase was not added to the list.'
     end
-  end
-
-  def show
-    @purchases = Purchase.where(user_id: @user)
   end
 
   private
