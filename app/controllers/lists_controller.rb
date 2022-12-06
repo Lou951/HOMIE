@@ -26,7 +26,7 @@ class ListsController < ApplicationController
     @list.user = current_user
     respond_to do |format|
       if @list.save
-        format.html { redirect_to lists_path, notice: 'Your list was successfully created.' }
+        format.html { redirect_to lists_path }
         format.json
         # format.json { render partial: "lists/list", locals: { list: @list }, formats: [:html] }
       else
