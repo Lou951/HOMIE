@@ -1,17 +1,16 @@
 .footer{
+  position: absolute;
+  bottom: 0em;
   height: 80px;
   background-color: white;
   font-size: 35px;
   width: 100%;
   text-decoration: none;
   padding-top: 14px;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 .footer a {
   color: purple;
-}
-
-.footer a:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
