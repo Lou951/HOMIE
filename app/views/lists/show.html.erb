@@ -50,39 +50,61 @@
 </div>
 <ul style="list-style: none";>
   <% @list_products.each do |product| %>
-   <% if (product.next_purchase - Date.today).to_i < 3  %>
+  <% countdown = (product.next_purchase - Date.today).to_i %>
+  <% if countdown < 1 %>
+  <li>
+    <div class="card-product" id="overdue">
+      <img src="<%=product.product.image_url%>" >
+      <div class="card-product-infos">
+        <h2><%= product.product.item %></h2>
+        <% if countdown == 0 %>
+          Running out today
+        <% else %>
+          Overdue
+        <% end %>
+    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+    <% end %>
+    </div>
+  </div>
+  </li>
+  <% elsif countdown < 3  %>
   <li>
     <div class="card-product" id="urgent">
       <img src="<%=product.product.image_url%>" >
       <div class="card-product-infos">
         <h2><%= product.product.item %></h2>
-        Running out in: <%= (product.next_purchase - Date.today).to_i %> days
+        <% if countdown == 1 %>
+          Running out in <%= countdown %> day
+        <% else %>
+          Running out in <%= countdown %> days
+        <% end %>
     <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
     <i class="fa-regular fa-circle-check text-black fa-xl"></i>
     <% end %>
     </div>
   </div>
   </li>
-<% elsif ((product.next_purchase - Date.today).to_i < 7) %>
-  <li>
-    <div class="card-product" id="warning">
-      <img src="<%=product.product.image_url%>" >
-      <div class="card-product-infos">
-        <h2><%= product.product.item %></h2>
-        Running out in: <%= (product.next_purchase - Date.today).to_i %> days
-    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-    <% end %>
+  <% elsif countdown < 7 %>
+    <li>
+      <div class="card-product" id="warning">
+        <img src="<%=product.product.image_url%>" >
+        <div class="card-product-infos">
+          <h2><%= product.product.item %></h2>
+          Running out in <%= countdown %> days
+      <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+      <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+      <% end %>
+      </div>
     </div>
-  </div>
-  </li>
+    </li>
 <% else %>
   <li>
     <div class="card-product">
       <img src="<%=product.product.image_url%>" >
       <div class="card-product-infos">
         <h2><%= product.product.item %></h2>
-        Running out in: <%= (product.next_purchase - Date.today).to_i %> days
+        Running out in <%= countdown %> days
     <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
     <i class="fa-regular fa-circle-check text-black fa-xl"></i>
     <% end %>
