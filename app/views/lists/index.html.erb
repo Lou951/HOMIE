@@ -6,7 +6,7 @@
           <div class="card-category my-3 mx-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= List.card_pic(list.name) %>)">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=@words[index]%>" aria-expanded="false" aria-controls="flush-collapse<%=@words[index]%>">
               <%= link_to list_path(list), class: 'in-front' do %>
-                <p><%= list.name %></p>
+                <p><%= list.name.capitalize %></p>
               <% end %>
             </button>
           </div>
@@ -37,7 +37,7 @@
         </div>
       <% end %>
 
-    <button type="button" class="btn btn-primary" id="btn-show-page" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" id="btn-design" data-bs-toggle="modal" data-bs-target="#exampleModal">
       New List
     </button>
 
@@ -52,8 +52,8 @@
           <div class="modal-body">
             <div class="list-form" data-insert-list-target="hide">
               <%= simple_form_for [@list] do |f| %>
-                <%= f.input :name %>
-                <%= f.submit :submit, class: 'btn btn-warning' %>
+                <%= f.input :name, label: false, placeholder: 'Home' %>
+                <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
               <% end %>
             </div>
           </div>
@@ -63,8 +63,3 @@
   </div>
 </div>
 </div>
-
-<!-- TODO
-1 make all the modals the same in all the pages
-2 fix the labels and add placeholders inside the inputs
-3 restart the server if index still not scrollable fix it! -->
