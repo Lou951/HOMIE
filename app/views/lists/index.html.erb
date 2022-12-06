@@ -4,15 +4,16 @@
       <% @lists.each_with_index do |list, index| %>
         <div class="accordion-item" data-insert-list-target="list">
           <div class="card-category my-3 mx-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= List.card_pic(list.name) %>)">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=@words[index]%>" aria-expanded="false" aria-controls="flush-collapse<%=@words[index]%>">
-              <%= link_to list_path(list), class: 'in-front' do %>
-                <p><%= list.name %></p>
-              <% end %>
-            </button>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%=@words[index]%>" aria-expanded="false" aria-controls="flush-collapse<%=@words[index]%>">
+          <%= link_to list_path(list), class: 'in-front' do %>
+            <p><%= list.name %></p>
+          <% end %>
           </div>
           <div id="flush-collapse<%=@words[index]%>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%=@words[index]%>" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body"><%= link_to list_path(list), class:"text-decoration-none picture" do %>
-              <% @urgent_products.where(list_id: list).each do |product| %>
+                <% @urgent_products.where(list_id: list).each do |product| %>
+                <% countdown = (product.next_purchase - Date.today).to_i %>
+                <% if countdown > 0 %>
                 <div class="card-product" id="urgent">
                   <img src="<%=product.product.image_url%>" >
                   <div class="card-product-infos">
@@ -20,22 +21,56 @@
                     <ul style="list-style: none">
                       <li><p> </p></li>
                     </ul>
-                  </div>
-                  <div class="card-flex-box ">
+                    <div class="card-flex-box ">
                     <ul style="list-style: none">
-                      <li>Running out in: <%= (product.next_purchase - Date.today).to_i %> days</li>
+                      <% if countdown == 1 %>
+                        <li>Running out in <%= countdown %> day</li>
+                      <% elsif countdown == 0 %>
+                        <li>Running out today</li>
+                      <% elsif countdown < 0 %>
+                        <li>Overdue</li>
+                      <% else %>
+                        <li>Running out in <%= countdown %> days</li>
+                      <% end %>
                     </ul>
                     <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
                       <i class="fa-regular fa-circle-check text-black fa-xl"></i>
                     <% end %>
-                  </div>
+                    </div>
                 </div>
+              </div>
+              <% else %>
+              <div class="card-product" id="overdue">
+                  <img src="<%=product.product.image_url%>" >
+                  <div class="card-product-infos">
+                    <h2><%= product.product.item %></h2>
+                    <ul style="list-style: none">
+                      <li><p> </p></li>
+                    </ul>
+                    <div class="card-flex-box ">
+                    <ul style="list-style: none">
+                      <% if countdown == 1 %>
+                        <li>Running out in <%= countdown %> day</li>
+                      <% elsif countdown == 0 %>
+                        <li>Running out today</li>
+                      <% elsif countdown < 0 %>
+                        <li>Overdue</li>
+                      <% else %>
+                        <li>Running out in <%= countdown %> days</li>
+                      <% end %>
+                    </ul>
+                    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+                      <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+                    <% end %>
+                    </div>
+                </div>
+              </div>
+              <% end %>
               <% end %>
               <% end %>
             </div>
           </div>
-        </div>
-      <% end %>
+          <% end %>
 
     <button type="button" class="btn btn-primary" id="btn-design" data-bs-toggle="modal" data-bs-target="#exampleModal">
       New List
@@ -60,8 +95,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
 </div>
 
 
