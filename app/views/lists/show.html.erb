@@ -3,116 +3,76 @@
   Add User to List
 </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User to List</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="list-form" data-insert-list-target="hide">
-          <%= simple_form_for [@list, @user_list] do |f| %>
-            <%= f.input :user, :label => "User's E-mail" %>
-            <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" id="btn-design" data-bs-toggle="modal" data-bs-target="#exampleModalP">
   Add Product
 </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="list-form" data-insert-list-target="hide">
-          <%= simple_form_for [@list, @list_product] do |f| %>
-            <%= f.input :frequency %>
-            <%= f.association :product, collection: Product.order('item ASC'), input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
-            <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <ul style="list-style: none";>
   <% @list_products.each do |product| %>
-  <% countdown = (product.next_purchase - Date.today).to_i %>
-  <% if countdown < 1 %>
-  <li>
-    <div class="card-product" id="overdue">
-      <img src="<%=product.product.image_url%>" >
-      <div class="card-product-infos">
-        <h2><%= product.product.item %></h2>
-        <% if countdown == 0 %>
-          Running out today
-        <% else %>
-          Overdue
-        <% end %>
-    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+    <% countdown = (product.next_purchase - Date.today).to_i %>
+    <% if countdown < 1 %>
+      <li>
+        <div class="card-product" id="overdue">
+          <img src="<%=product.product.image_url%>">
+          <div class="card-product-infos">
+            <h2><%= product.product.item %></h2>
+            <% if countdown == 0 %>
+              Running out today
+            <% else %>
+              Overdue
+            <% end %>
+            <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+              <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% elsif countdown < 3  %>
+      <li>
+        <div class="card-product" id="urgent">
+          <img src="<%=product.product.image_url%>">
+          <div class="card-product-infos">
+            <h2><%= product.product.item %></h2>
+            <% if countdown == 1 %>
+              Running out in <%= countdown %> day
+            <% else %>
+              Running out in <%= countdown %> days
+            <% end %>
+            <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+              <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% elsif countdown < 7 %>
+      <li>
+        <div class="card-product" id="warning">
+          <img src="<%=product.product.image_url%>" >
+          <div class="card-product-infos">
+            <h2><%= product.product.item %></h2>
+            Running out in <%= countdown %> days
+            <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+              <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% else %>
+      <li>
+        <div class="card-product">
+          <img src="<%=product.product.image_url%>" >
+            <div class="card-product-infos">
+              <h2><%= product.product.item %></h2>
+              Running out in <%= countdown %> days
+              <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+                <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </li>
     <% end %>
-    </div>
-  </div>
-  </li>
-  <% elsif countdown < 3  %>
-  <li>
-    <div class="card-product" id="urgent">
-      <img src="<%=product.product.image_url%>" >
-      <div class="card-product-infos">
-        <h2><%= product.product.item %></h2>
-        <% if countdown == 1 %>
-          Running out in <%= countdown %> day
-        <% else %>
-          Running out in <%= countdown %> days
-        <% end %>
-    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-    <% end %>
-    </div>
-  </div>
-  </li>
-  <% elsif countdown < 7 %>
-    <li>
-      <div class="card-product" id="warning">
-        <img src="<%=product.product.image_url%>" >
-        <div class="card-product-infos">
-          <h2><%= product.product.item %></h2>
-          Running out in <%= countdown %> days
-      <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-      <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-      <% end %>
-      </div>
-    </div>
-    </li>
-<% else %>
-  <li>
-    <div class="card-product">
-      <img src="<%=product.product.image_url%>" >
-      <div class="card-product-infos">
-        <h2><%= product.product.item %></h2>
-        Running out in <%= countdown %> days
-    <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-    <% end %>
-    </div>
-</div>
-<% end %>
-
-  </li>
   <% end %>
 </ul>
 
@@ -133,19 +93,43 @@
   <% end %>
 </div>
 
-<%# <ul>
-  <% @list.users.each do |user| %>
-  <%# <% user.list_purchases(@list).sum(&:price_paid) %>
-  <%# <% user_difference = (user.list_purchases(@list).sum(&:price_paid) - (@purchases.sum(:price_paid) / @all_list_users.count)).round(2) %>
-  <%# <% if user_difference < 0 %>
-  <%# <%= "#{user.email} owes £#{user_difference.abs}" %>
-  <%# <% else %>
-  <%# <%= "#{user.email} is owed £#{user_difference}" %>
-  <%# <% end %>
-  <%# <%= link_to "Remove Person From List", user_list_path(user), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this user from the list?"} if @list.user != user%> %>
-<%# <% end %>
-<%# </ul> %>
-<%# <div>
-  <li>Per user: £<%= (@purchases.sum(:price_paid) / @all_list_users.count).round(2) %></li>
-  <%# <li>Total Expenses: £<%= @purchases.sum(:price_paid).round(2) %></li>
-<%# </div> %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="list-form" data-insert-list-target="hide">
+          <%= simple_form_for [@list, @list_product] do |f| %>
+            <%= f.input :frequency, label: false, placeholder: 'Every 10 days' %>
+            <%= f.association :product, collection: Product.order('item ASC'), label: false, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
+            <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User to List</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="list-form" data-insert-list-target="hide">
+          <%= simple_form_for [@list, @user_list] do |f| %>
+            <%= f.input :user, label: false, placeholder: 'example@email.com' %>
+            <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

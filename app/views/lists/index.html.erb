@@ -87,7 +87,7 @@
           <div class="modal-body">
             <div class="list-form" data-insert-list-target="hide">
               <%= simple_form_for [@list] do |f| %>
-                <%= f.input :name %>
+                <%= f.input :name, label: false, placeholder: 'Home' %>
                 <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
               <% end %>
             </div>
@@ -96,9 +96,3 @@
       </div>
     </div>
 </div>
-
-
-<!-- TODO
-1 make all the modals the same in all the pages
-2 fix the labels and add placeholders inside the inputs
-3 restart the server if index still not scrollable fix it! -->
