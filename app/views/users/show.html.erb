@@ -1,5 +1,13 @@
-<div class="container">
-  <h1>Users#show</h1>
-  <p>Find me in app/views/users/show.html.erb</p>
-  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-dark" %>
+<div class="continer" style="text-align:center">
+    <h1 class="mt-4 mb-4">Your Profile Page</h1>
+    <h3> <%= current_user.email %> </h3>
+    <h3> <%= current_user.username %> </h3>
+  <div class="list-group">
+    <div class="card mb-3" style="width: 18rem; height: 10rem">
+        <%= link_to "Edit Profile", edit_user_registration_path(current_user), data: {turbo_method: :edit}, class: "dropdown-item" %>
+    </div>
+      <div class="card" style="width: 18rem; height: 10rem">
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+      </div>
+  </div>
 </div>
