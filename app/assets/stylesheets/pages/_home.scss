@@ -1,7 +1,11 @@
 // Specific CSS for your home-page
 
 body {
-  height: 100%;
+  min-height: 100vh;
+}
+
+.container {
+  min-height: 100vh;
 }
 
 .home-page {
