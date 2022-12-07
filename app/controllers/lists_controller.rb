@@ -15,6 +15,8 @@ class ListsController < ApplicationController
     @purchases = Purchase.joins(:list_product).and(ListProduct.where(list: @list))
     @all_list_users = @list.users
     @user_list = UserList.new
+    @purchase = Purchase.new
+    # @list_purchase = ListProduct.find(params[:id])
   end
 
   def new
@@ -59,6 +61,10 @@ class ListsController < ApplicationController
   # end
 
   private
+
+  # def set_list_product_id
+  #   @list_purchase = ListProduct.find(params[:id])
+  # end
 
   def show_list_products(list)
     @list_products = ListProduct.where(["list_id = #{list.id}"])
