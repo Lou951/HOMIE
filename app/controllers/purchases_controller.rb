@@ -11,7 +11,7 @@ class PurchasesController < ApplicationController
     @purchase.list_product = @list_product
     @purchase.purchase_date = Date.today
     @purchase.user = @user
-    @list_product.next_purchase = Date.today + @list_product.frequency
+    @list_product.next_purchase = Date.today + rand(10..35)
     @list_product.save
     if @purchase.save
       redirect_to list_path(@list_product.list.id), notice: 'Your purchases was successfully created.'
