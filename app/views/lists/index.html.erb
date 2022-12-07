@@ -10,63 +10,65 @@
           <% end %>
         </div>
           <div id="flush-collapse<%=@words[index]%>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%=@words[index]%>" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body"><%= link_to list_path(list), class:"text-decoration-none picture" do %>
-              <% @urgent_products.where(list_id: list).each do |product| %>
-                <% countdown = (product.next_purchase - Date.today).to_i %>
-                <% if countdown > 0 %>
-                  <div class="card-product" id="urgent">
-                    <img src="<%=product.product.image_url%>" >
-                    <div class="card-product-infos">
-                      <h2><%= product.product.item %></h2>
-                      <ul style="list-style: none">
-                        <li><p> </p></li>
-                      </ul>
-                      <div class="card-flex-box ">
+            <div class="accordion-body">
+              <%= link_to list_path(list), class:"text-decoration-none picture" do %>
+                <% @urgent_products.where(list_id: list).each do |product| %>
+                  <% countdown = (product.next_purchase - Date.today).to_i %>
+                  <% if countdown > 0 %>
+                    <div class="card-product" id="urgent">
+                      <img src="<%=product.product.image_url%>" >
+                      <div class="card-product-infos">
+                        <h2><%= product.product.item %></h2>
                         <ul style="list-style: none">
-                          <% if countdown == 1 %>
-                            <li>Running out in <%= countdown %> day</li>
-                          <% elsif countdown == 0 %>
-                            <li>Running out today</li>
-                          <% elsif countdown < 0 %>
-                            <li>Overdue</li>
-                          <% else %>
-                            <li>Running out in <%= countdown %> days</li>
-                          <% end %>
+                          <li><p> </p></li>
                         </ul>
-                        <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-                          <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-                        <% end %>
+                        <div class="card-flex-box ">
+                          <ul style="list-style: none">
+                            <% if countdown == 1 %>
+                              <li>Running out in <%= countdown %> day</li>
+                            <% elsif countdown == 0 %>
+                              <li>Running out today</li>
+                            <% elsif countdown < 0 %>
+                              <li>Overdue</li>
+                            <% else %>
+                              <li>Running out in <%= countdown %> days</li>
+                            <% end %>
+                          </ul>
+                          <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+                            <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                <% else %>
-                  <div class="card-product" id="overdue">
-                    <img src="<%=product.product.image_url%>" >
-                    <div class="card-product-infos">
-                      <h2><%= product.product.item %></h2>
-                      <ul style="list-style: none">
-                        <li><p> </p></li>
-                      </ul>
-                      <div class="card-flex-box ">
+                  <% else %>
+                    <div class="card-product" id="overdue">
+                      <img src="<%=product.product.image_url%>" >
+                      <div class="card-product-infos">
+                        <h2><%= product.product.item %></h2>
                         <ul style="list-style: none">
-                          <% if countdown == 1 %>
-                            <li>Running out in <%= countdown %> day</li>
-                          <% elsif countdown == 0 %>
-                            <li>Running out today</li>
-                          <% elsif countdown < 0 %>
-                            <li>Overdue</li>
-                          <% else %>
-                            <li>Running out in <%= countdown %> days</li>
-                          <% end %>
+                          <li><p> </p></li>
                         </ul>
-                        <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-                          <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+                        <div class="card-flex-box ">
+                          <ul style="list-style: none">
+                            <% if countdown == 1 %>
+                              <li>Running out in <%= countdown %> day</li>
+                            <% elsif countdown == 0 %>
+                              <li>Running out today</li>
+                            <% elsif countdown < 0 %>
+                              <li>Overdue</li>
+                            <% else %>
+                              <li>Running out in <%= countdown %> days</li>
+                            <% end %>
+                          </ul>
+                          <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+                            <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
             </div>
           </div>
       <% end %>
