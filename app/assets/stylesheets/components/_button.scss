@@ -3,7 +3,8 @@
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#fbaf16, #c47f0f);
+  background-color: $my-blue;
+  // background: linear-gradient(#fbaf16, #c47f0f);
   transition: 0.3s ease;
   border: 1px solid #c47f0f;
   width: 92%;
@@ -11,7 +12,8 @@
 }
 
 .btn-create-list:hover {
-  background: linear-gradient(#fbaf16, #c47f0f);
+  background-color: $my-blue;
+  // background: linear-gradient(#fbaf16, #c47f0f);
   color: white;
 }
 
@@ -20,10 +22,11 @@
 }
 
 #btn-design {
-  background: linear-gradient(#fbaf16, #c47f0f);
+  background: linear-gradient(rgba(87, 117, 144, 0.7), rgba(189, 224, 254, 1));
+  color: #464646;
   transition: 0.3s ease;
-  border: 1px solid #c47f0f;
-  margin: 10px;
+  border: 1px solid rgb(87, 117, 144);
+  width: 100%
 }
 
 #btn-design-delete {
