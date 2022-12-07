@@ -25,3 +25,10 @@
   border: 1px solid #c47f0f;
   margin: 10px;
 }
+
+#btn-design-delete {
+  background: linear-gradient($my-red, $my-dark-red);
+  transition: 0.3s ease;
+  border: 1px solid $my-dark-red;
+  margin: 10px;
+}

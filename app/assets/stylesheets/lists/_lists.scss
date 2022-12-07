@@ -5,7 +5,6 @@
 .card-product {
   overflow: hidden;
   height: 120px;
-  background: $my-green;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
@@ -21,6 +20,10 @@
 
 #overdue {
   background: $my-dark-red;
+}
+
+#good {
+  background: $my-green;
 }
 
 .card-product img {
