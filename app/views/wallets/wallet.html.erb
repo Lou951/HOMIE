@@ -1,28 +1,45 @@
-<div class="container">
-  <h1 style="text-align: center">Your Wallet</h1>
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card-group mt-2">
-            <% current_user.lists.each do |list| %>
-              <div class="card text-black bg-warning mb-3 h-50" style="max-width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title pb-2 border-bottom border-dark"><%= list.name.capitalize %>
-                  </h5>
-                    <p class="card-text mb-2">
-                      <% user_difference = (current_user.list_purchases(list) - (current_user.all_purchases(list) / list.users.count)).round(2) %>
-                       <% if user_difference.positive? %>
-                          <%= "You are owed £#{user_difference} from your household" %>
-                        <% elsif user_difference.negative? %>
-                          <%= "You owe £#{user_difference.abs} to the household" %>
-                        <% else %>
-                          <%= "You owe nothing to the list" %>
-                      <% end %>
-                    </p>
-                    <p class="border-top border-dark pt-3"><%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: £#{list.list_products_total(list)}" %><p>
-                </div>
-              </div>
-            <% end %>
+<div class="container" style="text-align: center">
+  <% if current_user.lists.empty? %>
+    <p class="card-text border-bottom border-primary p-4 mb-2">
+      You are not a member of any household or any lists.  Please click below to create a list.
+      <br>
+      <button class="btn-primary" id="btn-design">
+      <%= link_to "Here", new_list_path, class:"text-decoration-none" %></button>
+    </p>
+    <% else %>
+      <h1 style="text-align: center">Your Wallet</h1>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card-group mt-2">
+                <% current_user.lists.each do |list| %>
+                  <div class="card border border-3 border-primary mb-3" style="max-width: 18rem; background-color: rgba(245, 245, 245, 0.3);">
+                    <div class="card-body">
+                      <h5 class="card-title pb-2 border-bottom border-primary"><%= list.name.capitalize %>
+                      </h5>
+                        <% if list.users.count > 1 %>
+                            <p class="card-text mb-2">
+                              <% user_difference = (current_user.list_purchases(list) - (current_user.all_purchases(list) / list.users.count)).round(2) %>
+                                <% if user_difference.positive? %>
+                                    <%= "You are owed £#{user_difference} from your household" %>
+                                  <% elsif user_difference.negative? %>
+                                    <%= "You owe £#{user_difference.abs} to the household" %>
+                                  <% else %>
+                                    <%= "Your house balance is zero" %>
+                                <% end %>
+                            </p>
+                              <p class="border-top border-primary pt-3">
+                                <%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: £#{list.list_products_total(list)}" %>
+                              <p>
+                            <% else %>
+                              <p class="card-text border-bottom border-primary p-4 mb-2">
+                                <%= "Your total expenditure is #{current_user.all_purchases(list)}" %>
+                              </p>
+                        <% end %>
+                    </div>
+                  </div>
+                <% end %>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+  <% end %>
 </div>

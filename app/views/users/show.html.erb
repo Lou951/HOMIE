@@ -1,11 +1,15 @@
 <div class="container" style="text-align:center">
-    <h1 class="mt-4 mb-4"> <%= "#{current_user.username.nil? ? current_user.email : current_user.username.capitalize}'s" %>  Profile Page </h1>
+    <h1 class="mt-4 mb-4 primary">  <%= "#{current_user.username.nil? ? current_user.email : current_user.username.capitalize}'s" %>  Profile Page </h1>
   <div class="list-group">
-    <div class="card mb-3" style="width: 18rem; height: 10rem">
-      <%= link_to "Edit Profile", edit_user_registration_path(current_user), data: {turbo_method: :edit}, class: "dropdown-item" %>
+    <div class="card border border-3 border-primary mb-3" style="width: 18rem; height: 10rem">
+      <h5 class="card-title">
+        <%= link_to "Edit Profile", edit_user_registration_path(current_user), data: {turbo_method: :edit}, class: "dropdown-item" %>
+      </h5>
     </div>
-    <div class="card" style="width: 18rem; height: 10rem">
-      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+    <div class="card border border-3 border-primary mb-3" style="width: 18rem; height: 10rem">
+      <h5 class="card-title">
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+      </h5>
     </div>
   </div>
 </div>
