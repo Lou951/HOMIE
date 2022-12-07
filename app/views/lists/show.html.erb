@@ -1,68 +1,57 @@
 <!-- Button trigger modal -->
 <div class="container">
-  <button type="button" class="btn btn-primary" id="btn-design" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add User to List
-  </button>
+  <div class="show-container" id="show-btns">
+    <button type="button" class="btn btn-design" id="btn-show" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add User to List
+    </button>
 
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" id="btn-design" data-bs-toggle="modal" data-bs-target="#exampleModalP">
-    Add Product
-  </button>
-
-  <ul style="list-style: none";>
-    <% @list_products.each do |product| %>
-      <% countdown = (product.next_purchase - Date.today).to_i %>
-      <% if countdown < 1 %>
-        <li>
-          <div class="card-product" id="overdue">
-            <img src="<%=product.product.image_url%>">
-            <div class="card-product-infos">
-              <h2><%= product.product.item %></h2>
-              <% if countdown == 0 %>
-                Running out today
-              <% else %>
-                Overdue
-              <% end %>
-              <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-                <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-              <% end %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-design" id="btn-show" data-bs-toggle="modal" data-bs-target="#exampleModalP">
+      Add Product
+    </button>
+  </div>
+  <div class="show-container">
+    <ul style="list-style: none";>
+      <% @list_products.each do |product| %>
+        <% countdown = (product.next_purchase - Date.today).to_i %>
+        <% if countdown < 1 %>
+          <li>
+            <div class="card-product" id="overdue">
+              <img src="<%=product.product.image_url%>">
+              <div class="card-product-infos">
+                <h2><%= product.product.item %></h2>
+                <% if countdown == 0 %>
+                  Running out today
+                <% else %>
+                  Overdue
+                <% end %>
+                <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+                  <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+                <% end %>
+              </div>
             </div>
-          </div>
-        </li>
-      <% elsif countdown < 3  %>
-        <li>
-          <div class="card-product" id="urgent">
-            <img src="<%=product.product.image_url%>">
-            <div class="card-product-infos">
-              <h2><%= product.product.item %></h2>
-              <% if countdown == 1 %>
-                Running out in <%= countdown %> day
-              <% else %>
-                Running out in <%= countdown %> days
-              <% end %>
-              <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-                <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-              <% end %>
+          </li>
+        <% elsif countdown < 3  %>
+          <li>
+            <div class="card-product" id="urgent">
+              <img src="<%=product.product.image_url%>">
+              <div class="card-product-infos">
+                <h2><%= product.product.item %></h2>
+                <% if countdown == 1 %>
+                  Running out in <%= countdown %> day
+                <% else %>
+                  Running out in <%= countdown %> days
+                <% end %>
+                <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+                  <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+                <% end %>
+              </div>
             </div>
-          </div>
-        </li>
-      <% elsif countdown < 7 %>
-        <li>
-          <div class="card-product" id="warning">
-            <img src="<%=product.product.image_url%>" >
-            <div class="card-product-infos">
-              <h2><%= product.product.item %></h2>
-              Running out in <%= countdown %> days
-              <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-                <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-              <% end %>
-            </div>
-          </div>
-        </li>
-      <% else %>
-        <li>
-          <div class="card-product" id="good">
-            <img src="<%=product.product.image_url%>" >
+          </li>
+        <% elsif countdown < 7 %>
+          <li>
+            <div class="card-product" id="warning">
+              <img src="<%=product.product.image_url%>" >
               <div class="card-product-infos">
                 <h2><%= product.product.item %></h2>
                 Running out in <%= countdown %> days
@@ -72,15 +61,25 @@
               </div>
             </div>
           </li>
+        <% else %>
+          <li>
+            <div class="card-product" id="good">
+              <img src="<%=product.product.image_url%>" >
+                <div class="card-product-infos">
+                  <h2><%= product.product.item %></h2>
+                  Running out in <%= countdown %> days
+                  <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
+                    <i class="fa-regular fa-circle-check text-black fa-xl"></i>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-
-  <div class="mt-4">
-    <%= link_to "Delete List", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this list?"}, class:"btn btn-primary", id:"btn-design-delete"%>
+    </ul>
   </div>
 
-  <div>
+  <div class="show-container">
     <%= month_calendar(attribute: :list_products) do |date, list_products| %>
       <%= date %>
       <% @list_products.each do |list_products| %>
@@ -91,6 +90,10 @@
         <% end %>
       <% end %>
     <% end %>
+  </div>
+
+  <div class="mt-4 d-flex justify-content-center">
+    <%= link_to "Delete List", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this list?"}, class:"btn btn-primary", id:"btn-design-delete"%>
   </div>
 
   <!-- Modal Product-->

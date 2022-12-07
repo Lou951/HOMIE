@@ -1,9 +1,8 @@
 <div class="container" style="text-align:center">
 
-    <% if current_user.username %>
-      <h1 class="mt-4 mb-4 primary">  <%= "#{current_user.username.nil? ? current_user.email : current_user.username.capitalize}'s" %>  Profile Page </h1>
-    <% end %>
-    
+  <%= "#{current_user.username.nil? ? current_user.email : current_user.username.capitalize}'s" %>  Profile Page </h1>
+  <h1 class="mt-4 mb-4 primary">
+
   <div class="list-group">
     <div class="card border border-3 border-primary mb-3" style="width: 18rem; height: 10rem">
       <h5 class="card-title">
