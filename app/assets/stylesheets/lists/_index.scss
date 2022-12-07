@@ -36,8 +36,20 @@
   --bs-accordion-border-color: #00000000;
 }
 
+.accordion-item {
+  background-color: transparent;
+}
+
 .in-front {
   z-index: 10;
+}
+
+.titlebar {
+  z-index: 100;
+}
+
+.footer {
+  z-index: 100;
 }
 
 h2 {
