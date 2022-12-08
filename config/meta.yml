@@ -1,0 +1,5 @@
+meta_product_name: "Homie"
+meta_title: "Homie - Homemaking Made Easy"
+meta_description: "Track regularly used products for yourself or a shared home, alerting you when an item is required.
+Automatically calculates the total owed by each member of the household."
+meta_image: "cover.png" # should exist in `app/assets/images/`
