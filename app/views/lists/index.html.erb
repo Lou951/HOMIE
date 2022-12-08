@@ -86,14 +86,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New List</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Name Your List</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="list-form" data-insert-list-target="hide">
+          <div class="list-form" data-insert-list-target="hide" style="text-align:center">
             <%= simple_form_for [@list] do |f| %>
               <%= f.input :name, label: false, placeholder: 'e.g. home' %>
-              <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
+              <%= f.submit "Create Your List", class: "btn btn-design", id: "btn-add-list" %>
             <% end %>
           </div>
         </div>

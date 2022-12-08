@@ -2,7 +2,7 @@
 <div class="container">
   <div class="show-container" id="show-btns">
     <button type="button" class="btn btn-design" id="btn-show" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Add User to List
+      Share List
     </button>
 
     <!-- Button trigger modal -->
@@ -97,20 +97,21 @@
   </div>
 
   <!-- Modal Product-->
-  <div class="modal fade" id="exampleModalP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModalP" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="text-align: center">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel" >Select Product</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="list-form" data-insert-list-target="hide">
             <%= simple_form_for [@list, @list_product] do |f| %>
               <%# f.input :frequency, label: false, placeholder: 'days before I need this' %>
-              <%= f.input :frequency, as: :select, collection: (0..100), label: 'Days before I need this', prompt: false %>
               <%= f.association :product, collection: Product.order('item ASC'), label: false, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
-              <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
+              <%= f.input :next_purchase, label: 'When do you need this next?', prompt: false %>
+              <%= f.input :frequency, placeholder: 'Remind me to buy this every (days)', label: false, prompt: false %>
+              <%= f.submit "Add Product", class: "btn btn-design", id: "btn-show" %>
             <% end %>
           </div>
         </div>
@@ -123,14 +124,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add User to List</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Share List</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="list-form" data-insert-list-target="hide">
+          <div class="list-form" data-insert-list-target="hide" style="text-align: center">
             <%= simple_form_for [@list, @user_list] do |f| %>
-              <%= f.input :user, label: false, placeholder: 'example@example.com' %>
-              <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
+              <%= f.input :user, label: false, placeholder: 'useremail@email.com' %>
+              <%= f.submit "Share List", class: "btn btn-design", id: "btn-show" %>
             <% end %>
           </div>
         </div>
