@@ -35,9 +35,6 @@
                             <li>Running out in <%= countdown %> days</li>
                           <% end %>
                         </ul>
-                        <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-                          <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-                        <% end %>
                       </div>
                     </div>
                   </div>
@@ -61,9 +58,6 @@
                             <li>Running out in <%= countdown %> days</li>
                           <% end %>
                         </ul>
-                        <%= link_to new_list_product_purchase_path(product), class:"text-decoration-none picture" do %>
-                          <i class="fa-regular fa-circle-check text-black fa-xl"></i>
-                        <% end %>
                       </div>
                     </div>
                   </div>
@@ -74,8 +68,8 @@
         </div>
       <% end %>
     </div>
-    <div>
-      <button type="button" class="btn btn-design" id="btn-add-list" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <div class="btn-add-list">
+      <button type="button" class="btn btn-design" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 100%;">
         New List
       </button>
     </div>
