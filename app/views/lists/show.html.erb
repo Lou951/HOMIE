@@ -7,7 +7,7 @@
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-design" id="btn-show" data-bs-toggle="modal" data-bs-target="#exampleModalP">
-      Add Product
+      Add Item
     </button>
   </div>
   <div class="show-container">
@@ -101,7 +101,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel" >Select Product</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel" >Select Item</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -111,7 +111,7 @@
               <%= f.association :product, collection: Product.order('item ASC'), label: false, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
               <%= f.input :frequency, placeholder: 'Remind me to buy this every (days)', label: false, prompt: false %>
               <%= f.input :next_purchase, label: 'Select date if required sooner:', prompt: false, html5: true %>
-              <%= f.submit "Add Product", class: "btn btn-design", id: "btn-show" %>
+              <%= f.submit "Add Item", class: "btn btn-design", id: "btn-show" %>
             <% end %>
           </div>
         </div>
