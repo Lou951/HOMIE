@@ -1,4 +1,4 @@
-<div class="w-75 p-3 d-flex justify-content-center">
+<div class="container" style="min-height: 95vh; padding: 3em;">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
 
@@ -21,12 +21,9 @@
                   as: :file,
                   required: true %>
     </div>
-</div>
-
     <div class="form-actions btn btn-design" id="btn-add-list">
       <%= f.button :submit, "Sign up" %>
     </div>
   <% end %>
-    <div class="btn btn-design" id="btn-add-list">
-      <%= render "devise/shared/links" %>
-    </div>
+</div>
+      <p style="text-align: right;">Already a user? <%= link_to 'Log In', new_user_session_path, class: 'btn btn-design' %></p>
