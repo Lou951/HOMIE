@@ -1,4 +1,4 @@
-<div class="container" style="min-height: 95vh; padding: 3em;">
+<div class="container" style="min-height: 85vh; padding: 3em; margin-top: 3em max-height: 90vh;">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
 
@@ -21,7 +21,7 @@
                   as: :file,
                   required: true %>
     </div>
-    <div class="form-actions btn btn-design" id="btn-add-list">
+    <div class="form-actions btn btn-design" id="btn-add-list" style="width: 100%">
       <%= f.button :submit, "Sign up" %>
     </div>
   <% end %>
