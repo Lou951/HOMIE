@@ -130,7 +130,7 @@
         <div class="modal-body">
           <div class="list-form" data-insert-list-target="hide">
             <%= simple_form_for [@list, @user_list] do |f| %>
-              <%= f.input :user, label: false, placeholder: 'example@example.com' %>
+              <%= f.input :user, label: false, placeholder: 'useremail@email.com' %>
               <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
             <% end %>
           </div>
