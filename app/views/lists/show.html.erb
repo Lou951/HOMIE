@@ -109,7 +109,7 @@
             <%= simple_form_for [@list, @list_product] do |f| %>
               <%# f.input :frequency, label: false, placeholder: 'days before I need this' %>
               <%= f.association :product, collection: Product.order('item ASC'), label: false, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
-              <%= f.input :next_purchase, label: 'When do you need this next?', prompt: false %>
+              <%= f.input :next_purchase, label: 'When do you need this next?', prompt: false, html5: true %>
               <%= f.input :frequency, placeholder: 'Remind me to buy this every (days)', label: false, prompt: false %>
               <%= f.submit "Add Product", class: "btn btn-design", id: "btn-show" %>
             <% end %>
