@@ -1,5 +1,6 @@
-<div class="container">
+<div class="container" style="test-align:center">
   <%= simple_form_for [@list_product, @purchase] do |f| %>
     <%= f.input :price_paid, placeholder: "£.."%>
+    <%= f.submit "Just Bought", class: "btn btn-design", id: "btn-show"%>
   <% end %>
 </div>
