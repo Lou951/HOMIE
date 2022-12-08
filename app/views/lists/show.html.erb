@@ -85,7 +85,7 @@
       <% @list_products.each do |list_products| %>
         <% if date == list_products.next_purchase.strftime("%d").to_i %>
           <div class="next">
-            <p><%= list_products.product.item.truncate(12) %></p>
+            <%= image_tag list_products.product.image_url, class: "little-avatar" %>
           </div>
         <% end %>
       <% end %>

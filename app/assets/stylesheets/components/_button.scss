@@ -28,15 +28,15 @@
   border: 1px solid rgb(87, 117, 144);
 }
 
-#btn-add-list {
-  width: 100%;
+.btn-add-list {
+  padding: 1em;
 }
 
 #btn-show {
-  display: inline-flex;
-  justify-content: center;
   width: 49%;
 }
+
+
 
 #btn-design-delete {
   background: linear-gradient($my-red, $my-dark-red);
