@@ -1,16 +1,16 @@
 .simple-calendar {
   .table {
-    min-height: 80vh;
-    max-height: 40vh;
-    background-color: $my-turquoise;
+    min-height: 65vh;
+    max-height: 65vh;
+    background-color: rgba(128, 0, 128, 0.6);
   }
 
   .day {
-    background-color: $my-light-blue;
+    background-color: $my-pink;
   }
 
   .day:has(p) {
-    background: $my-green;
+    background: $my-red;
   }
 
   .wday-0 {}
@@ -22,7 +22,7 @@
   .wday-6 {}
 
   .today {
-    background-color: $my-orange;
+    background-color: $my-green;
   }
   .past {}
   .future {}
@@ -40,18 +40,33 @@
 
   .calendar-heading {
     color: black;
-
+    font-weight: bold;
+    font-size: large;
+    display: flex;
+    justify-content: space-around;
   }
 
   .calendar-heading a {
     text-decoration: none;
-    color: black
+    font-weight: bold;
+    color: black;
   }
   .next p {
-    text-size: 20px;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
   }
 }
 
+
+.simple-calendar td {
+  max-height: 6vh;
+  max-width: 3.5em;
+  min-width: 3em;
+  min-height: 3em;
+  max-height: 4em;
+  overflow: hidden;
+}
 // .meeting {
 //   color: white;
 //   padding: 8px 24px;
