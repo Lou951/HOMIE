@@ -1,4 +1,4 @@
-<div class="container" style="min-height: 85vh; padding: 3em; margin-top: 3em max-height: 90vh;">
+<div class="container" style="min-height: 85vh; padding: 3em; padding-top: 5em; margin-top: 3em max-height: 90vh;">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
 
@@ -26,4 +26,4 @@
     </div>
   <% end %>
 </div>
-      <p style="text-align: right;">Already a user? <%= link_to 'Log In', new_user_session_path, class: 'btn btn-design' %></p>
+<p style="text-align: right; margin-right: 0.5em;">Already a user? <%= link_to 'Log In', new_user_session_path, class: 'btn btn-design' %></p>
