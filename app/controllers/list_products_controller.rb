@@ -28,7 +28,6 @@ class ListProductsController < ApplicationController
     @list_product.product = @product
     @list_product.user = @user
     @list_product.list = @list
-    @list_product.next_purchase = Date.today + @list_product.frequency
     # respond_to do |format|
     #   format.html { redirect_to_list_product_path }
     #   format.text { render partial: "/", locals: {list_product: @list_product}, formats: [:html] }
@@ -55,6 +54,6 @@ class ListProductsController < ApplicationController
   end
 
   def list_product_params
-    params.require(:list_product).permit(:frequency, :list_id, :product_id, :user_id)
+    params.require(:list_product).permit(:frequency, :next_purchase, :list_id, :product_id, :user_id)
   end
 end

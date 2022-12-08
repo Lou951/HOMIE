@@ -108,8 +108,9 @@
           <div class="list-form" data-insert-list-target="hide">
             <%= simple_form_for [@list, @list_product] do |f| %>
               <%# f.input :frequency, label: false, placeholder: 'days before I need this' %>
-              <%= f.input :frequency, as: :select, collection: (0..100), label: 'Days before I need this', prompt: false %>
               <%= f.association :product, collection: Product.order('item ASC'), label: false, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
+              <%= f.input :next_purchase, label: 'When do you need this by?', prompt: false %>
+              <%= f.input :frequency, label: 'How often do you usually buy this? (days)', prompt: false %>
               <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
             <% end %>
           </div>
