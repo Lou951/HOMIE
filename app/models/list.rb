@@ -22,13 +22,15 @@ class List < ApplicationRecord
   def self.card_pic(placeholder)
     case placeholder.capitalize
     when "Home"
-      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670242444/z69cn8xetmwbandw4w3m.jpg"
+      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670242444/is8ovsqi5ytow4j7vks4.jpg"
     when "Work"
-      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670241974/kgiay14unp5lnaqjhmsg.jpg"
+      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670241974/uvf6reuuic96nnzmsdy6.jpg"
+    when "Gym"
+      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670241974/xiqunehlyrinmkq2fio2.jpg"
     when "Personal"
-      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670242329/xhstoanskcdd8cbzvf6g.jpg"
+      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670242329/zeruwojtzwflt8cqul9e.jpg"
     else
-      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670242272/zmd5aud9kmf1e4rzwsrb.jpg"
+      "https://res.cloudinary.com/de4yia9u4/image/upload/v1670242272/vzw91qaud9jc2afjceol.jpg"
     end
   end
 end
