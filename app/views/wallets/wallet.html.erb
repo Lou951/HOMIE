@@ -12,10 +12,9 @@
           <div class="col-sm-12">
             <div class="card-group mt-2">
                 <% current_user.lists.each do |list| %>
-                  <div class="card border border-3 border-primary mb-3" style="max-width: 18rem; background-color: rgba(245, 245, 245, 0.3);">
+                  <div class="card border border-3 border-primary mb-3" style="width: 80%; background-color: rgba(245, 245, 245, 0.6);">
                     <div class="card-body">
-                      <h5 class="card-title pb-2 border-bottom border-primary"><%= list.name.capitalize %>
-                      </h5>
+                      <h5 class="card-title pb-2 border-bottom border-primary"><%= list.name.capitalize %></h5>
                         <% if list.users.count > 1 %>
                             <p class="card-text mb-2">
                               <% user_difference = (current_user.list_purchases(list) - (current_user.all_purchases(list) / list.users.count)).round(2) %>
@@ -29,7 +28,7 @@
                             </p>
                               <p class="border-top border-primary pt-3">
                                 <%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: £#{list.list_products_total(list)}" %>
-                              <p>
+                              </p>
                             <% else %>
                               <p class="card-text border-bottom border-primary p-4 mb-2">
                                 <%= "Your total expenditure is £#{current_user.all_purchases(list)}" %>
