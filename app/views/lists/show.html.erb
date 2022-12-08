@@ -2,7 +2,7 @@
 <div class="container">
   <div class="show-container" id="show-btns">
     <button type="button" class="btn btn-design" id="btn-show" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Add User to List
+      Share List
     </button>
 
     <!-- Button trigger modal -->
@@ -101,7 +101,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Select Product</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -109,8 +109,8 @@
             <%= simple_form_for [@list, @list_product] do |f| %>
               <%# f.input :frequency, label: false, placeholder: 'days before I need this' %>
               <%= f.association :product, collection: Product.order('item ASC'), label: false, input_html: {data: {controller: "tom-select", tom_select_options_value: {tags: true}}}  %>
-              <%= f.input :next_purchase, label: 'When do you need this by?', prompt: false %>
-              <%= f.input :frequency, label: 'How often do you usually buy this? (days)', prompt: false %>
+              <%= f.input :next_purchase, label: 'When do you need this next?', prompt: false %>
+              <%= f.input :frequency, placeholder: 'Remind me to buy this every (days)', label: false, prompt: false %>
               <%= f.submit :submit, class: "btn btn-primary", id: "btn-design" %>
             <% end %>
           </div>
@@ -124,7 +124,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add User to List</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Share List</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
