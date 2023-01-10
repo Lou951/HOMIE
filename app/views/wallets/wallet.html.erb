@@ -17,21 +17,21 @@
                       <h5 class="card-title pb-2 border-bottom border-primary"><%= list.name.capitalize %></h5>
                         <% if list.users.count > 1 %>
                             <p class="card-text mb-2">
-                              <% user_difference = (current_user.list_purchases(list) - (current_user.all_purchases(list) / list.users.count)).round(2) %>
+                              <% user_difference = current_user.user_difference(list) %>
                                 <% if user_difference.positive? %>
-                                    <%= "You are owed £#{user_difference} from your household" %>
+                                    <%= "You are owed #{number_to_currency(user_difference, unit: '£', precision: 2)} from your household" %>
                                   <% elsif user_difference.negative? %>
-                                    <%= "You owe £#{user_difference.abs} to the household" %>
+                                    <%= "You owe #{number_to_currency(user_difference.abs, unit: '£', precision: 2)} to the household" %>
                                   <% else %>
                                     <%= "Your house balance is zero" %>
                                 <% end %>
                             </p>
                               <p class="border-top border-primary pt-3">
-                                <%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: £#{list.list_products_total(list)}" %>
+                                <%= list.list_products_total(list) == 0 ? "No Household Expenditure" : "Total Household Expenditure: #{number_to_currency(list.list_products_total(list), unit: '£', precision: 2 )}" %>
                               </p>
                             <% else %>
                               <p class="card-text border-bottom border-primary p-4 mb-2">
-                                <%= "Your total expenditure is £#{current_user.all_purchases(list)}" %>
+                                <%= "Your total expenditure is #{number_to_currency(current_user.all_purchases(list), unit: '£', precision: 2)}" %>
                               </p>
                         <% end %>
                     </div>
