@@ -15,8 +15,6 @@ class User < ApplicationRecord
     Purchase.where(
       list_product_id: list.list_products.pluck(:id)
     ).where(
-      created_at: (Time.now - 1.month)..Time.now
-    ).where(
       user_id: id
     ).sum(&:price_paid)
   end
@@ -24,8 +22,10 @@ class User < ApplicationRecord
   def all_purchases(list)
     Purchase.where(
       list_product_id: list.list_products.pluck(:id)
-    ).where(
-      created_at: (Time.now - 1.month)..Time.now
     ).sum(&:price_paid)
+  end
+
+  def user_difference(list)
+    (self.list_purchases(list) - (self.all_purchases(list) / list.users.count)).round(2)
   end
 end
