@@ -13,7 +13,7 @@
   <div class="show-container">
     <ul style="list-style: none";>
       <% @list_products.each do |product| %>
-        <% countdown = (product.next_purchase - Date.today).to_i %>
+        <% countdown = product.countdown %>
         <% if countdown < 1 %>
           <li>
             <div class="card-product" id="overdue">
